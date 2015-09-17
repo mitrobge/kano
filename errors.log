@@ -1,0 +1,25 @@
+
+ERRNO: 256
+TEXT: SQLSTATE[HY000] [1045] Access denied for user 'rroot'@'localhost' (using password: YES)
+LOCATION: /opt/lampp/htdocs/kano/business/database_handler.php, line 36, at September 17, 2015, 8:33 pm
+Showing backtrace:
+trigger_error("SQLSTATE[HY000] [1045] Access denied for user 'rroot'@'localhost...", "256") # line   36, file: /opt/lampp/htdocs/kano/business/database_handler.php
+DatabaseHandler.GetHandler() # line  152, file: /opt/lampp/htdocs/kano/business/database_handler.php
+DatabaseHandler.GetOne("CALL administrator_has_permission(:administrator_id, :permission...", Array[2]) # line  384, file: /opt/lampp/htdocs/kano/business/administrator.php
+Administrator.HasPermission("ADMIN_CATALOG") # line   78, file: /opt/lampp/htdocs/kano/presentation/admin_categories.php
+AdminCategories.__construct() # line   12, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%F9^F97^F97AE06E%%admin_categories.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%F9^F97^F97AE06...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 1
+TEXT: fffff
+LOCATION: /opt/lampp/htdocs/kano/errors.log, line 10, at September 17, 2015, 8:36 pm
+Showing backtrace:
+
+
