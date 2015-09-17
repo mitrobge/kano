@@ -25,6 +25,7 @@
   RewriteRule ^customer/register/?$ index.php?CustomerRegister [L]
 
   RewriteRule ^calendar/?$ index.php?calendar [L]
+  RewriteRule ^all-surveys/?$ index.php?all-surveys [L]
   RewriteRule ^data-entry?(.*)$ index.php?data-entry$1 [QSA]
   RewriteRule ^cluster-data?(.*)$ index.php?cluster-data$1 [QSA]
   RewriteRule ^beehive-data?(.*)$ index.php?beehive-data$1 [QSA]

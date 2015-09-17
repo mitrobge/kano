@@ -30,9 +30,10 @@ define('SENDMAIL_FROM', 'Errors@example.com');
 ini_set('sendmail_from', SENDMAIL_FROM);
 
 // By default we don't log errors to a file
-define('LOG_ERRORS', false);
+define('LOG_ERRORS', true);
 // define('LOG_ERRORS_FILE', 'c:\\kano\\errors_log.txt'); // Windows
-define('LOG_ERRORS_FILE', '/root/Desktop/errors.log'); // Linux
+define('LOG_ERRORS_FILE', '/opt/lampp/htdocs/kano/errors.log'); // Linux
+
 /* Generic error message to be displayed instead of debug info
    (when DEBUGGING is false) */
 define('SITE_GENERIC_ERROR_MESSAGE', '<h1>E-Shop Error!</h1>');
@@ -40,7 +41,7 @@ define('SITE_GENERIC_ERROR_MESSAGE', '<h1>E-Shop Error!</h1>');
 // Database connectivity setup
 define('DB_PERSISTENCY', 'true');
 define('DB_SERVER', 'localhost;port=3306');
-define('DB_USERNAME', 'root');
+define('DB_USERNAME', 'rroot');
 define('DB_PASSWORD', 'root123');
 define('DB_DATABASE', 'kano');
 //define('DB_USERNAME', 'bb_user');

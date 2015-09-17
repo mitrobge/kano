@@ -67,17 +67,17 @@
     </article>
 </section>
 
+        <li class="last">
+        	<ul id="lang">
+        		<li class="gr">Ελληνικά</li>
+        		<li class="en">English</li>
+        	</ul>
+        	<a style="padding-left:6px;" id="change" href="{$obj->mLinks.toChangeLang}">{if $obj->mActiveLang eq "gr"}Change{else}Αλλαγή{/if}</a>
+        </li>
 
-    {include file='customer_info.tpl'} 
-	
-    <div style="display: none;">
-    {include file="customer_login.tpl"}
-    </div>
 
    <ul>
-   <li><a href="{$obj->mLinks.toCalendar}">{if $obj->mActiveLang eq "gr"}Ημερολόγιο{else}Το ημερολόγιό μου{/if}</a></li>
-   <li><a href="{$obj->mLinks.toDataEntry}">{if $obj->mActiveLang eq "gr"}Καταχώρηση δεδομένων{else}Data entry{/if}</a></li>
-   <li><a href="{$obj->mLinks.toCustomerProfile}">{if $obj->mActiveLang eq "gr"}Προφίλ Χρήστη{else}My Beehive profile{/if}</a></li>
+   <li><a href="{$obj->mLinks.toAllSurveys}">{if $obj->mActiveLang eq "gr"}Έρευνες ΚΑΝΟ{else}KANO Surveys{/if}</a></li>
    </ul>
    {include file=$obj->mContentsCell}
 

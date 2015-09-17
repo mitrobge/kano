@@ -36,6 +36,7 @@ CREATE TABLE survey (
     survey_sdate        DATETIME     NOT NULL,
     survey_edate        DATETIME     NOT NULL,
     added_on            DATETIME     NOT NULL,
+    is_active           BOOLEAN NOT NULL DEFAULT TRUE,
     sorting_id          INT          NOT NULL DEFAULT 0,
     PRIMARY KEY (survey_id)
 );

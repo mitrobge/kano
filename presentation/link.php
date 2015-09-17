@@ -68,6 +68,12 @@ class Link
         return self::Build($link);
     }
     
+    public static function ToAllSurveys()
+    {
+        $link = 'all-surveys';
+        return self::Build($link);
+    }
+    
     public static function ToDataEntry()
     {
         $link = 'data-entry';
