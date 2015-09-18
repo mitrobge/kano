@@ -52,6 +52,7 @@ class Index
             'toCareers' => Link::ToOrganization('careers'),
             'toCareerDetails' => Link::ToOrganization('career-details'),
             'toAllSurveys' => Link::ToAllSurveys(),
+            'toSurvey' => Link::ToSurvey(),
         );
 	}
 

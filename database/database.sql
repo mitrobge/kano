@@ -794,5 +794,15 @@ BEGIN
     WHERE file_id = inFileId;
 END$$
 
+CREATE PROCEDURE surveys_get_active_surveys(IN inLanguageId INT)
+  BEGIN
+    SELECT      s.survey_id, d.name, d.description
+    FROM        survey s
+      JOIN        survey_description d on d.survey_id = s.survey_id
+    WHERE       d.language_id = inLanguageId
+                AND now() between survey_sdate and s.survey_edate
+    ORDER BY    s.sorting_id, s.survey_id;
+END$$
+
 -- Change back DELIMITER to ;
 DELIMITER ;

@@ -73,6 +73,14 @@ class Link
         $link = 'all-surveys';
         return self::Build($link);
     }
+
+    public static function ToSurvey()
+    {
+        $link = 'survey';
+       // $link .= '?sid=';
+       //$link .=  $surveyId;
+        return self::Build($link);
+    }
     
     public static function ToDataEntry()
     {

@@ -47,12 +47,12 @@ INSERT INTO survey_category (survey_id, category_id) VALUES
 
 -- Polulate survey_description table
 INSERT INTO survey_description (survey_id, language_id, name, description) VALUES
-        (1, 1, 'Kano Model Survey 2015a', 'Description of KANO Model survey 2015a'),
-        (1, 2, 'Kano Model Έρευνα 2015a', 'Περιγραφή για έρευνα ΚΑΝΟ 2015a'),
-        (2, 1, 'Kano Model Survey 2014', 'Description of KANO survey 2014'),
-        (2, 2, 'Kano Model Έρευνα 2014', 'Περιγραφή για έρευνα ΚΑΝΟ 2014'),
-        (3, 1, 'CSS Survey 2015', 'Description of CSS survey 2015'),
-        (3, 2, 'CSS Έρευνα 2015', 'Περιγραφή για έρευνα survey 2015');
+        (1, 2, 'Kano Model Survey 2015a', 'Description of KANO Model survey 2015a'),
+        (1, 1, 'Kano Model Έρευνα 2015a', 'Περιγραφή για έρευνα ΚΑΝΟ 2015a'),
+        (2, 2, 'Kano Model Survey 2014', 'Description of KANO survey 2014'),
+        (2, 1, 'Kano Model Έρευνα 2014', 'Περιγραφή για έρευνα ΚΑΝΟ 2014'),
+        (3, 2, 'CSS Survey 2015', 'Description of CSS survey 2015'),
+        (3, 1, 'CSS Έρευνα 2015', 'Περιγραφή για έρευνα survey 2015');
 
 INSERT INTO survey_questions_characteristics (question_characteristic_id, survey_id) VALUES
         (1, 1),
@@ -391,3 +391,5 @@ INSERT INTO administrator_permission (administrator_id, permission_id) VALUES
     (1, 11),
     (1, 12),
     (1, 13);
+
+update kano.survey set survey.survey_edate = now() + interval 2 month where survey.survey_id < 3;
