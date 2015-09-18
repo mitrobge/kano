@@ -41,7 +41,7 @@ define('SITE_GENERIC_ERROR_MESSAGE', '<h1>E-Shop Error!</h1>');
 // Database connectivity setup
 define('DB_PERSISTENCY', 'true');
 define('DB_SERVER', 'localhost;port=3306');
-define('DB_USERNAME', 'rroot');
+define('DB_USERNAME', 'root');
 define('DB_PASSWORD', 'root123');
 define('DB_DATABASE', 'kano');
 //define('DB_USERNAME', 'bb_user');
