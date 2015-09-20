@@ -52,7 +52,6 @@ class Index
             'toCareers' => Link::ToOrganization('careers'),
             'toCareerDetails' => Link::ToOrganization('career-details'),
             'toAllSurveys' => Link::ToAllSurveys(),
-            'toSurvey' => Link::ToSurvey(),
         );
 	}
 
@@ -81,10 +80,12 @@ class Index
             $this->mContentsCell = 'customer_register.tpl';
         else if (isset ($_GET['all-surveys']))
             $this->mContentsCell = 'allsurveys.tpl';
+        else if (isset ($_GET['survey']))
+            $this->mContentsCell = 'survey.tpl';
         
         $this->mActiveLang = Language::GetName();
         $this->mPageTitle = $this->_GetPageTitle($this->mActiveLang);
-        
+
         
     }
 

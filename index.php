@@ -21,7 +21,6 @@ require_once PRESENTATION_DIR . 'link.php';
 // Load the database handler
 require_once BUSINESS_DIR . '/database_handler.php'; 
 require_once BUSINESS_DIR . 'language.php';
-require_once BUSINESS_DIR . 'beehive.php';
 require_once BUSINESS_DIR . 'customer.php';
 require_once BUSINESS_DIR . 'password_hasher.php';
 require_once BUSINESS_DIR . 'utils.php';

@@ -7,55 +7,55 @@
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-	<meta charset="utf-8" />
-	<title>Kano Model</title>
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
+    <meta charset="utf-8" />
+    <title>Kano Model</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-	<!-- Mobile Specific Metas -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-    {literal}    
-    <script type="text/javascript">
-        /mobi/i.test(navigator.userAgent) && !location.hash && setTimeout(function () {
-          if (!pageYOffset) window.scrollTo(0, 1);
-        }, 1000);
-    </script>
+    {literal}
+        <script type="text/javascript">
+            /mobi/i.test(navigator.userAgent) && !location.hash && setTimeout(function () {
+                if (!pageYOffset) window.scrollTo(0, 1);
+            }, 1000);
+        </script>
     {/literal}
 
-	<!-- CSS -->
-	<link rel="stylesheet" href="{$obj->mUrl}assets/css/base.css">
-	<link rel="stylesheet" href="{$obj->mUrl}assets/css/amazium.css">
-	<link rel="stylesheet" href="{$obj->mUrl}assets/css/layout.css">
-	<link rel="stylesheet" href="{$obj->mUrl}assets/css/form.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{$obj->mUrl}assets/css/base.css">
+    <link rel="stylesheet" href="{$obj->mUrl}assets/css/amazium.css">
+    <link rel="stylesheet" href="{$obj->mUrl}assets/css/layout.css">
+    <link rel="stylesheet" href="{$obj->mUrl}assets/css/form.css">
 
-	<!-- Favicons -->
-	<link rel="shortcut icon" href="images/favicon.ico">
-	<link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon.png">
-        
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon.png">
 
-        <!-- Add jQuery library -->
-        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-        <!-- Add mousewheel plugin (this is optional) -->
-        <script type="text/javascript" src="{$obj->mUrl}assets/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+    <!-- Add jQuery library -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-        <!-- Add fancyBox -->
-        <link rel="stylesheet" href="{$obj->mUrl}assets/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
-        <script type="text/javascript" src="{$obj->mUrl}assets/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <!-- Add mousewheel plugin (this is optional) -->
+    <script type="text/javascript" src="{$obj->mUrl}assets/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
 
-        <!-- Optionally add helpers - button, thumbnail and/or media -->
-        <link rel="stylesheet" href="{$obj->mUrl}assets/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
-        <script type="text/javascript" src="{$obj->mUrl}assets/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
-        <script type="text/javascript" src="{$obj->mUrl}assets/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+    <!-- Add fancyBox -->
+    <link rel="stylesheet" href="{$obj->mUrl}assets/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+    <script type="text/javascript" src="{$obj->mUrl}assets/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-        <link rel="stylesheet" href="{$obj->mUrl}assets/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
-        <script type="text/javascript" src="{$obj->mUrl}assets/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
-        
-        <script type="text/javascript" src="{$obj->mUrl}assets/js/actions.js"></script>
+    <!-- Optionally add helpers - button, thumbnail and/or media -->
+    <link rel="stylesheet" href="{$obj->mUrl}assets/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+    <script type="text/javascript" src="{$obj->mUrl}assets/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+    <script type="text/javascript" src="{$obj->mUrl}assets/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+    <link rel="stylesheet" href="{$obj->mUrl}assets/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+    <script type="text/javascript" src="{$obj->mUrl}assets/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+    <script type="text/javascript" src="{$obj->mUrl}assets/js/actions.js"></script>
 
 
 </head>
@@ -63,23 +63,24 @@
 
 <section class="row">
     <article class="grid_12">
-      <a href="{$obj->mUrl}"><h1>Kano Model</h1></a>
+        <a href="{$obj->mUrl}"><h1>Kano Model</h1></a>
     </article>
 </section>
+<section class="row">
+    <article class="grid_4">
+        <ul id="lang">
+            <li class="gr">Ελληνικά</li>
+            <li class="en">English</li>
+        </ul>
+        <a style="padding-left:6px;" id="change" href="{$obj->mLinks.toChangeLang}">{if $obj->mActiveLang eq "gr"}Change{else}Αλλαγή{/if}</a>
 
-        <li class="last">
-        	<ul id="lang">
-        		<li class="gr">Ελληνικά</li>
-        		<li class="en">English</li>
-        	</ul>
-        	<a style="padding-left:6px;" id="change" href="{$obj->mLinks.toChangeLang}">{if $obj->mActiveLang eq "gr"}Change{else}Αλλαγή{/if}</a>
-        </li>
 
-
-   <ul>
-   <li><a href="{$obj->mLinks.toAllSurveys}">{if $obj->mActiveLang eq "gr"}Έρευνες ΚΑΝΟ{else}KANO Surveys{/if}</a></li>
-   </ul>
-   {include file=$obj->mContentsCell}
+        <ul>
+            <li><a href="{$obj->mLinks.toAllSurveys}">{if $obj->mActiveLang eq "gr"}Έρευνες ΚΑΝΟ{else}KANO Surveys{/if}</a></li>
+        </ul>
+    </article>
+</section>
+{include file=$obj->mContentsCell}
 
 </body>
 </html>

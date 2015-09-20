@@ -74,11 +74,11 @@ class Link
         return self::Build($link);
     }
 
-    public static function ToSurvey()
+    public static function ToSurvey($surveyId)
     {
         $link = 'survey';
-       // $link .= '?sid=';
-       //$link .=  $surveyId;
+        $link .= '?sid=';
+        $link .=  $surveyId;
         return self::Build($link);
     }
     
