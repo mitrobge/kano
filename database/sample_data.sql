@@ -63,21 +63,28 @@ INSERT INTO survey_questions_characteristics (question_characteristic_id, survey
         (6, 2),
         (7, 2);
 
-INSERT INTO survey_questions_characteristics_description (question_characteristic_id, language_id, question_characteristic_name) VALUES
-    (1,1,'Χαρακτηριστικό 1'),
-    (1,2,'Characteristic 1'),
-    (2,1,'Χαρακτηριστικό 2'),
-    (2,2,'Characteristic 2'),
-    (3,1,'Χαρακτηριστικό 3'),
-    (3,2,'Characteristic 3'),
-    (4,1,'Χαρακτηριστικό 4'),
-    (4,2,'Characteristic 4'),
-    (5,1,'Χαρακτηριστικό 5'),
-    (5,2,'Characteristic 5'),
-    (6,1,'Χαρακτηριστικό 6'),
-    (6,2,'Characteristic 6'),
-    (7,1,'Χαρακτηριστικό 7'),
-    (7,2,'Characteristic 7');
+
+INSERT INTO survey_questions_characteristics_description (question_characteristic_id, language_id, question, is_positive) VALUES
+  (1,1,'Πως σας φαίνεται να έχει το ξενοδοχείο χαρτι τουαλέτας;',1),
+  (1,1,'Πως σας φαίνεται να μην έχει το ξενοδοχείο χαρτι τουαλέτας;', 0),
+  (1,2,'How do you feel if the hotel has toilet paper?',1),
+  (1,2,'How do you feel if the hotel has no toilet paper?', 0),
+  (2,1,'Πως σας φαίνεται να έχει το ξενοδοχείο καθαρές πετσέτες;',1),
+  (2,1,'Πως σας φαίνεται να μην έχει το ξενοδοχείο καθαρές πετσέτες;', 0),
+  (2,2,'How do you feel if the hotel has clean towels?',1),
+  (2,2,'How do you feel if the hotel has no clean towels?', 0),
+  (3,1,'Πως σας φαίνεται να έχει το ξενοδοχείο πίσινα;',1),
+  (3,1,'Πως σας φαίνεται να μην έχει το ξενοδοχείο πίσινα;', 0),
+  (3,2,'How do you feel if the hotel has water pool?',1),
+  (3,2,'How do you feel if the hotel has no water pool?', 0),
+  (4,1,'Πως σας φαίνεται το ξενοδοχείο να παρέχει βραδυνό;',1),
+  (4,1,'Πως σας φαίνεται το ξενοδοχείο να μην παρέχει βραδυνό;', 0),
+  (4,2,'How do you feel if the hotel provides dinner?',1),
+  (4,2,'How do you feel if the hotel does not provide dinner?', 0),
+  (5,1,'Πως σας φαίνεται το ξενοδοχείο να δέχεται πιστωτική/χρεωστική κάρτα;',1),
+  (5,1,'Πως σας φαίνεται το ξενοδοχείο να μην δέχεται πιστωτική/χρεωστική κάρτα;', 0),
+  (5,2,'How do you feel if the hotel accepts credit card?',1),
+  (5,2,'How do you feel if the hotel does not accept credit card?', 0);
 
 INSERT INTO survey_customers_characteristics (customers_characteristic_id, survey_id) VALUES
         (1, 1),

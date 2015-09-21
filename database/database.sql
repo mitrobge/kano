@@ -173,6 +173,19 @@ CREATE TABLE uploaded_files (
     PRIMARY KEY (file_id)
 );
 
+-- changes 21/09/2015--
+drop table survey_questions_characteristics_description;
+
+CREATE TABLE survey_questions_characteristics_description (
+  question_characteristic_id          INT             NOT NULL AUTO_INCREMENT,
+  language_id                         INT             NOT NULL,
+  question        VARCHAR(200)     NOT NULL,
+  is_positive                         BOOLEAN NOT NULL DEFAULT TRUE,
+  PRIMARY KEY (question_characteristic_id, language_id, is_positive)
+);
+
+-- changes 21/09/2015--
+
 -- Change DELIMITER to $$
 DELIMITER $$
 
@@ -803,6 +816,17 @@ CREATE PROCEDURE surveys_get_active_surveys(IN inLanguageId INT)
                 AND now() between survey_sdate and s.survey_edate
     ORDER BY    s.sorting_id, s.survey_id;
 END$$
+
+CREATE PROCEDURE surveys_get_survey_data(IN surveyId INT, IN inLanguageId INT)
+  BEGIN
+    SELECT s.survey_id id, d.name, d.description, sqc.question_characteristic_id qid, sqcd.question, sqcd.is_positive
+    FROM survey s join kano.survey_description d on d.survey_id = s.survey_id
+      join survey_questions_characteristics sqc on sqc.survey_id = s.survey_id
+      join kano.survey_questions_characteristics_description sqcd on sqcd.question_characteristic_id = sqc.question_characteristic_id
+      and sqcd.language_id = d.language_id
+      and d.language_id = inLanguageId and s.survey_id = surveyId
+    order by qid, is_positive desc;
+  END$$
 
 -- Change back DELIMITER to ;
 DELIMITER ;

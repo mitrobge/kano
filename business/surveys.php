@@ -1249,5 +1249,21 @@ class Surveys
         return DatabaseHandler::GetAll($sql, $params);
     }
 
+    public static function GetSurveyData($surveyId, $languageId = null)
+    {
+        // Get current session's languageId if not specified
+        if (is_null($languageId))
+            $languageId = Language::Get();
+
+        // Build SQL query
+        $sql = 'CALL surveys_get_survey_data(:survey_id, :language_id)';
+
+        // Build the parameters array
+        $params = array(':survey_id' => $surveyId, ':language_id' => $languageId);
+
+        // Execute the query and return the results
+        return DatabaseHandler::GetAll($sql, $params);
+    }
+
 }
 ?>
