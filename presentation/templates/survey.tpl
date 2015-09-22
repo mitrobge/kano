@@ -7,7 +7,8 @@
     </article>
 </section>
 
-<form name="submitsurveyForm" action="submitsurvey" method="post">
+<form name="submitsurveyForm" action="{$obj->mLinkToSubmitSurvey}" method="post">
+    <input type="hidden" name="sid" value="{$obj->data[0].id}"/>
     {foreach from=$obj->data item=item}
         <section class="row">
             <article class="grid_12">
@@ -16,13 +17,27 @@
                     <tr>
                         {*{if $item.is_positive eq "true"}1{else}0{/if}*}
                         <td><input type="radio" name="q{$item.qid}{$item.is_positive}" value="1" checked>Μου αρέσει έτσι</td>
-                        <td><input type="radio" name="q{$item.qid}{$item.is_positive}" value="1">Έτσι πρέπει να είναι</td>
-                        <td><input type="radio" name="q{$item.qid}{$item.is_positive}" value="1">Είμαι Ουδέτερος</td>
-                        <td><input type="radio" name="q{$item.qid}{$item.is_positive}" value="1">Μπορώ να το ανεχθώ</td>
-                        <td><input type="radio" name="q{$item.qid}{$item.is_positive}" value="1">Δεν μου αρέσει έτσι</td>
+                        <td><input type="radio" name="q{$item.qid}{$item.is_positive}" value="2">Έτσι πρέπει να είναι</td>
+                        <td><input type="radio" name="q{$item.qid}{$item.is_positive}" value="3">Είμαι Ουδέτερος</td>
+                        <td><input type="radio" name="q{$item.qid}{$item.is_positive}" value="4">Μπορώ να το ανεχθώ</td>
+                        <td><input type="radio" name="q{$item.qid}{$item.is_positive}" value="5">Δεν μου αρέσει έτσι</td>
                     </tr>
                 </table>
             </article>
         </section>
     {/foreach}
+
+    <section class="row">
+        <article class="grid_7">
+            {*    <table>
+                    <tr>*}
+                    <fieldset id="personal">
+                        <label for="email">Διεύθυνση Email : </label>
+                        <input name="email" id="email" type="text" value="" size="10" tabindex="2" />
+                    </fieldset>
+                    <input id="button1" type="submit" name="submit" value="Αποστολή" />
+               {* </tr>
+            </table>*}
+        </article>
+    </section>
 </form>

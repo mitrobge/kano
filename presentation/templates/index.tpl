@@ -60,7 +60,7 @@
 
 </head>
 <body>
-
+{if $obj->mContentsCell neq "submitsurvey.tpl"}
 <section class="row">
     <article class="grid_12">
         <a href="{$obj->mUrl}"><h1>Kano Model</h1></a>
@@ -80,6 +80,7 @@
         </ul>
     </article>
 </section>
+{/if}
 {include file=$obj->mContentsCell}
 
 </body>

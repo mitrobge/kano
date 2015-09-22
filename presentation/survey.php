@@ -7,6 +7,7 @@ class Survey
     public $mLinkToHome;
     public $mLinkToSelf;
     public $mActiveLang;
+    public $mLinkToSubmitSurvey;
     public $data;
     public $links = array();
     private $surveyId = null;
@@ -19,6 +20,7 @@ class Survey
         $this->mLinkToHome = Link::Build('');
         $this->mLinkToSelf = Link::ToSelf();
         $this->mActiveLang = Language::GetName();
+        $this->mLinkToSubmitSurvey = Link::ToSubmitSurvey("submitsurvey.php");
 
         if (isset ($_GET['sid']))
             $this->surveyId = $_GET['sid'];

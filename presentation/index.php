@@ -82,6 +82,8 @@ class Index
             $this->mContentsCell = 'allsurveys.tpl';
         else if (isset ($_GET['survey']))
             $this->mContentsCell = 'survey.tpl';
+        else if (isset ($_GET['submitsurvey']))
+            $this->mContentsCell = 'submitsurvey.tpl';
         
         $this->mActiveLang = Language::GetName();
         $this->mPageTitle = $this->_GetPageTitle($this->mActiveLang);
