@@ -1265,5 +1265,31 @@ class Surveys
         return DatabaseHandler::GetAll($sql, $params);
     }
 
+    public static function GetCustomerSurveyAnswers($surveyId, $customerEmail)
+    {
+
+        // Build SQL query
+        $sql = 'CALL surveys_get_customer_survey_answers(:survey_id, :email)';
+
+        // Build the parameters array
+        $params = array(':survey_id' => $surveyId, ':email' => $customerEmail);
+
+        // Execute the query and return the results
+        return DatabaseHandler::GetAll($sql, $params);
+    }
+
+    public static function SubmitSurveyAnswer($customerEmail, $surveyId,
+                                              $characteristicId, $positiveAnswer, $negativeAnswer)
+    {
+        // Build SQL query
+        $sql = 'CALL survey_submit_answer(:email, :survey_id, :qid, :pos, :neg)';
+
+        // Build the parameters array
+        $params = array(':email' => $customerEmail, ':survey_id' => $surveyId,
+            ':qid' => $characteristicId, ':pos' => $positiveAnswer, ':neg' => $negativeAnswer);
+
+        DatabaseHandler::Execute($sql, $params);
+    }
+
 }
 ?>

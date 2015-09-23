@@ -48,24 +48,24 @@
                 <fieldset>
                     <div class="radio">
                     <span>
-                        <input id="r1" type="radio" tabindex="11" name="q{$item.qid}{$item.is_positive}" value="1" checked>
-                        <label for="r1" onclick="">Μου αρέσει έτσι</label>
+                        <input id="r{$item.qid}{$item.is_positive}1" type="radio" tabindex="11" name="q{$item.qid}{$item.is_positive}" value="1" checked>
+                        <label for="r{$item.qid}{$item.is_positive}1" onclick="">Μου αρέσει έτσι</label>
                     </span>
                     <span>
-                        <input id="r2" type="radio" tabindex="11" name="q{$item.qid}{$item.is_positive}" value="2">
-                        <label for="r2" onclick="">Έτσι πρέπει να είναι</label>
+                        <input id="r{$item.qid}{$item.is_positive}2" type="radio" tabindex="11" name="q{$item.qid}{$item.is_positive}" value="2">
+                        <label for="r{$item.qid}{$item.is_positive}2" onclick="">Έτσι πρέπει να είναι</label>
                     </span>
                     <span>
-                        <input id="r3" type="radio" tabindex="11" name="q{$item.qid}{$item.is_positive}" value="3">
-                        <label for="r3" onclick="">Είμαι Ουδέτερος</label>
+                        <input id="r{$item.qid}{$item.is_positive}3" type="radio" tabindex="11" name="q{$item.qid}{$item.is_positive}" value="3">
+                        <label for="r{$item.qid}{$item.is_positive}3" onclick="">Είμαι Ουδέτερος</label>
                     </span>
                     <span>
-                        <input id="r4" type="radio" tabindex="11" name="q{$item.qid}{$item.is_positive}" value="2">
-                        <label for="r4" onclick="">Μπορώ να το ανεχθώ</label>
+                        <input id="r{$item.qid}{$item.is_positive}4" type="radio" tabindex="11" name="q{$item.qid}{$item.is_positive}" value="4">
+                        <label for="r{$item.qid}{$item.is_positive}4" onclick="">Μπορώ να το ανεχθώ</label>
                     </span>
                     <span>
-                        <input id="r4" type="radio" tabindex="11" name="q{$item.qid}{$item.is_positive}" value="3">
-                        <label for="r4" onclick="">Δεν μου αρέσει έτσι</label>
+                        <input id="r{$item.qid}{$item.is_positive}5" type="radio" tabindex="11" name="q{$item.qid}{$item.is_positive}" value="5">
+                        <label for="r{$item.qid}{$item.is_positive}5" onclick="">Δεν μου αρέσει έτσι</label>
                     </span>
                     </div>
                 </fieldset>

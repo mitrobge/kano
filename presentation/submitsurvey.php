@@ -22,15 +22,19 @@ class SubmitSurvey
         $email = $_POST['email'];
         $sid = $_POST['sid'];
 
-        echo "email: ".$email. "<br>";
-        echo "sid: ".$sid. "<br>";;
 
-        //replace with distinct qids query
+        $existingAnswers = Surveys::GetCustomerSurveyAnswers($sid, $email);
+
+        if(count($existingAnswers)>0){
+            echo "Already submitted";
+            return;
+        }
+
         $surveyData = Surveys::GetSurveyData($sid, null);
         $queries = array();
 
         foreach($surveyData as $value){
-            echo "qid:". $value['qid'];
+            //echo "qid:". $value['qid'];
             if (!in_array($value['qid'], $queries)) {
                 $queries[] = $value['qid'];
             }
@@ -38,12 +42,15 @@ class SubmitSurvey
 
         //print_r($queries);
 
-        foreach($queries as $value){
-            $positiveAnswer = $_POST["q".$value.$this->is_positive];
-            $negativeAnswer = $_POST["q".$value.$this->is_negative];
-            if (!isset($_POST[$positiveAnswer]) || !isset($_POST[$negativeAnswer]))
+        foreach($queries as $value) {
+            $positiveAnswer = $_POST["q" . $value . $this->is_positive];
+            $negativeAnswer = $_POST["q" . $value . $this->is_negative];
+            if (!isset($positiveAnswer) || !isset($negativeAnswer)) {
                 return;
-            echo $_POST["q".$value.$this->is_positive];
+            }
+
+            //echo $email.",".$sid.",".$value.",".$positiveAnswer.",".$negativeAnswer;
+            Surveys::SubmitSurveyAnswer($email, $sid, $value, $positiveAnswer, $negativeAnswer);
         }
 
 
