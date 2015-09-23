@@ -1,6 +1,38 @@
 {* smarty *}
 {load_presentation_object filename="survey" assign="obj"}
 
+{literal}
+    <script language="JavaScript" type="text/javascript">
+
+        function validateEmail(form)
+        {
+            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if(form.email.value.match(mailformat))
+            {
+                form.email.focus();
+                return true;
+            }
+            else
+            {
+                {/literal}
+                {if $obj->mActiveLang eq "gr"}
+                {literal}
+                alert("Λάθος διεύθυνση email!");
+                {/literal}
+                {else}
+                {literal}
+                alert("You have entered an invalid email address!");
+                {/literal}
+                {/if}
+                {literal}
+                form.email.focus();
+                return false;
+            }
+        }
+
+    </script>
+{/literal}
+
 <section class="row">
     <article class="grid_7">
         <h4>{if $obj->mActiveLang eq "gr"}Έρευνα: {else}Survey:{/if} {$obj->data[0].name}</h4>
@@ -8,7 +40,7 @@
 </section>
 <section class="row">
     <article class="grid_6">
-        <form name="submitsurveyForm" action="{$obj->mLinkToSubmitSurvey}" method="post">
+        <form id="form1" name="submitsurveyForm" action="{$obj->mLinkToSubmitSurvey}" method="post" onsubmit="return validateEmail(this)">
             <input type="hidden" name="sid" value="{$obj->data[0].id}"/>
             {foreach from=$obj->data item=item}
 

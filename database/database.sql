@@ -186,6 +186,22 @@ CREATE TABLE survey_questions_characteristics_description (
 
 -- changes 21/09/2015--
 
+-- changes 23/09/2015--
+
+DELETE FROM survey_answers;
+alter table survey_answers add column `customer_id`  INT NOT NULL;
+
+DROP TABLE customer;
+
+CREATE TABLE customer (
+  customer_id             INT             NOT NULL AUTO_INCREMENT,
+  email                   VARCHAR(96)    NOT NULL,
+  PRIMARY KEY (customer_id),
+  UNIQUE KEY idx_customer_email (email)
+);
+
+-- changes 23/09/2015--
+
 -- Change DELIMITER to $$
 DELIMITER $$
 
