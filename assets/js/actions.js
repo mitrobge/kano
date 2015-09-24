@@ -1,4 +1,31 @@
 $(document).ready(function() {
+     	
+    var active = $('#active_lang').val();
+     	var lang_url = $('#change').attr('href');
+     	if(active=='gr'){
+            if (lang_url.toString().indexOf('?') < 0)
+                $('#change').attr('href', lang_url+'?lang=en');
+            else
+                $('#change').attr('href', lang_url+'&lang=en');
+     		$('#top_nav li.last a').hover(function(){
+	        	$('#lang li.gr').slideUp(0);
+	        }, function(){
+	        	$('#lang li.gr').slideDown(0);
+	        })
+     	}else{
+            if (lang_url.toString().indexOf('?') < 0)
+     		    $('#change').attr('href', lang_url+'?lang=gr');
+            else
+     		    $('#change').attr('href', lang_url+'&lang=gr');
+     		$('#lang li.gr').slideUp(0);
+     		$('#top_nav li.last a').hover(function(){
+
+	        	$('#lang li.gr').slideDown(0);
+	        }, function(){
+	        	
+	        	$('#lang li.gr').slideUp(0);
+	        })
+     	}
 
     $("#login_btn").fancybox();
 		

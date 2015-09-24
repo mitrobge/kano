@@ -63,16 +63,22 @@
 {if $obj->mContentsCell neq "submitsurvey.tpl"}
 <section class="row">
     <article class="grid_12">
+        <ul id="top_nav">
+        <li class="last">
+        	<ul id="lang">
+        		<li class="gr">Ελληνικά</li>
+        		<li class="en">English</li>
+        	</ul>
+        	<a style="padding-left:6px;" id="change" href="{$obj->mLinks.toChangeLang}">{if $obj->mActiveLang eq "gr"}Change{else}Αλλαγή{/if}</a>
+        </li>
+      </ul>
         <a href="{$obj->mUrl}"><h1>Kano Model</h1></a>
     </article>
 </section>
 <section class="row">
     <article class="grid_4">
-        <ul id="lang">
-            <li class="gr">Ελληνικά</li>
-            <li class="en">English</li>
-        </ul>
-        <a style="padding-left:6px;" id="change" href="{$obj->mLinks.toChangeLang}">{if $obj->mActiveLang eq "gr"}Change{else}Αλλαγή{/if}</a>
+      
+      <input type="hidden" name="active_lang" id="active_lang" value="{$obj->mActiveLang}"/>
 
 
         <ul>

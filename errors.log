@@ -23,3 +23,38 @@ LOCATION: /opt/lampp/htdocs/kano/errors.log, line 10, at September 17, 2015, 8:3
 Showing backtrace:
 
 
+
+ERRNO: 256
+TEXT: SQLSTATE[42000]: Syntax error or access violation: 1305 PROCEDURE kano.surveys_get_active_surveys does not exist
+LOCATION: /opt/lampp/htdocs/kano/business/database_handler.php, line 101, at September 20, 2015, 3:27 pm
+Showing backtrace:
+trigger_error("SQLSTATE[42000]: Syntax error or access violation: 1305 PROCEDUR...", "256") # line  101, file: /opt/lampp/htdocs/kano/business/database_handler.php
+DatabaseHandler.GetAll("CALL surveys_get_active_surveys(:language_id)", Array[1]) # line 1249, file: /opt/lampp/htdocs/kano/business/surveys.php
+Surveys.GetActiveSurveys(null) # line   25, file: /opt/lampp/htdocs/kano/presentation/allsurveys.php
+AllSurveys.init() # line   15, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%89^894^894DB58E%%allsurveys.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%89^894^894DB58...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line  104, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   41, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 256
+TEXT: SQLSTATE[HY000] [1049] Unknown database 'kano'
+LOCATION: /opt/lampp/htdocs/kano/business/database_handler.php, line 36, at September 22, 2015, 5:52 pm
+Showing backtrace:
+trigger_error("SQLSTATE[HY000] [1049] Unknown database 'kano'", "256") # line   36, file: /opt/lampp/htdocs/kano/business/database_handler.php
+DatabaseHandler.GetHandler() # line  119, file: /opt/lampp/htdocs/kano/business/database_handler.php
+DatabaseHandler.GetRow("CALL language_get_by_name(:language_name)", Array[1]) # line   96, file: /opt/lampp/htdocs/kano/business/language.php
+Language.GetByName("gr") # line   26, file: /opt/lampp/htdocs/kano/business/language.php
+Language.Get() # line   38, file: /opt/lampp/htdocs/kano/business/language.php
+Language.GetName() # line   88, file: /opt/lampp/htdocs/kano/presentation/index.php
+Index.init() # line   15, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
