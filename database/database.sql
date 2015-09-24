@@ -186,6 +186,22 @@ CREATE TABLE survey_questions_characteristics_description (
 
 -- changes 21/09/2015--
 
+-- changes 23/09/2015--
+
+DELETE FROM survey_answers;
+alter table survey_answers add column `customer_id`  INT NOT NULL;
+
+DROP TABLE customer;
+
+CREATE TABLE customer (
+  customer_id             INT             NOT NULL AUTO_INCREMENT,
+  email                   VARCHAR(96)    NOT NULL,
+  PRIMARY KEY (customer_id),
+  UNIQUE KEY idx_customer_email (email)
+);
+
+-- changes 23/09/2015--
+
 -- Change DELIMITER to $$
 DELIMITER $$
 
@@ -826,6 +842,48 @@ CREATE PROCEDURE surveys_get_survey_data(IN surveyId INT, IN inLanguageId INT)
       and sqcd.language_id = d.language_id
       and d.language_id = inLanguageId and s.survey_id = surveyId
     order by qid, is_positive desc;
+  END$$
+
+CREATE PROCEDURE surveys_get_customer_survey_answers(IN surveyId INT, IN customerEmail VARCHAR(50))
+  BEGIN
+    select sa.answer_id, sa.survey_id, sa.characteristic_id, sa.characteristic_answer_pos,
+      sa.characteristic_answer_neg, sa.added_on, sa.customer_id
+    from kano.survey_answers sa join kano.customer c on sa.customer_id = c.customer_id
+    where sa.survey_id = surveyId and c.email = customerEmail;
+  END$$
+
+CREATE PROCEDURE survey_submit_answer(IN customerEmail VARCHAR(50),
+                                      IN surveyId INT,
+                                      IN characteristicId INT,
+                                      IN positiveAnswer INT,
+                                      IN negativeAnswer INT)
+  BEGIN
+
+    DECLARE cId int;
+
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+    ROLLBACK;
+    /*GET DIAGNOSTICS CONDITION 1
+    @p1 = RETURNED_SQLSTATE, @p2 = MESSAGE_TEXT;
+    SELECT 'An error has occurred, operation rollbacked and the stored procedure was terminated';*/
+    END;
+
+    START TRANSACTION;
+
+    select customer_id INTO cId from customer where email =  customerEmail;
+
+    if(cId is null)
+    then
+      INSERT INTO customer (email) VALUES (customerEmail);
+      SELECT LAST_INSERT_ID() INTO cId;
+    end if;
+
+    INSERT
+    INTO  kano.survey_answers (survey_id, characteristic_id, characteristic_answer_pos,
+                               characteristic_answer_neg, added_on, customer_id)
+    VALUES (surveyId, characteristicId, positiveAnswer, negativeAnswer, now(), cId);
+    COMMIT;
   END$$
 
 -- Change back DELIMITER to ;
