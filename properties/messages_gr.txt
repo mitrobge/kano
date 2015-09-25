@@ -1,0 +1,3 @@
+successful_submission=Επιτυχής καταχώρηση
+fail_submission=Σφάλμα στην καταχώρηση
+already_submitted=Έχετε ήδη συμπληρώσει την έρευνα

@@ -60,21 +60,24 @@
 
 </head>
 <body>
-{if $obj->mContentsCell neq "submitsurvey.tpl"}
+
 <section class="row">
     <article class="grid_12">
         <ul id="top_nav">
         <li class="last">
-        	<ul id="lang">
+            <ul id="lang">
         		<li class="gr">Ελληνικά</li>
         		<li class="en">English</li>
         	</ul>
-        	<a style="padding-left:6px;" id="change" href="{$obj->mLinks.toChangeLang}">{if $obj->mActiveLang eq "gr"}Change{else}Αλλαγή{/if}</a>
+            <a style="padding-left:6px; font-size: 12px;" id="change" href="{$obj->mLinks.toChangeLang}">{if $obj->mActiveLang eq "gr"}Change{else}Αλλαγή{/if}</a>
         </li>
-      </ul>
-        <a href="{$obj->mUrl}"><h1>Kano Model</h1></a>
+        </ul>
+        {if $obj->mContentsCell neq "survey.tpl"}
+        <a href="{$obj->mUrl}"><h3>Kano Model</h3></a>
+        {/if}
     </article>
 </section>
+{if $obj->mContentsCell neq "survey.tpl"}
 <section class="row">
     <article class="grid_4">
       

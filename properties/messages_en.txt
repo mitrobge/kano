@@ -1,0 +1,3 @@
+successful_submission=Successful Submission
+fail_submission=Fail Submission
+already_submitted=You have already submitted the survey

@@ -6,6 +6,7 @@ class SubmitSurvey
     public $mActiveLang;
     private $is_positive = 1;
     private $is_negative = 0;
+    public $result = 0;
 
     public function __construct()
     {
@@ -26,7 +27,7 @@ class SubmitSurvey
         $existingAnswers = Surveys::GetCustomerSurveyAnswers($sid, $email);
 
         if(count($existingAnswers)>0){
-            echo "Already submitted";
+            $this->result = -1;
             return;
         }
 
@@ -53,6 +54,8 @@ class SubmitSurvey
             Surveys::SubmitSurveyAnswer($email, $sid, $value, $positiveAnswer, $negativeAnswer);
         }
 
+
+        $this->result  = 1;
 
     }
 }
