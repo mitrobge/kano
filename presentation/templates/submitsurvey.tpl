@@ -4,6 +4,6 @@
 
 <section class="row">
     <article class="grid_7">
-        <h4>{if $obj->result == 1}{#fail_submission#}{elseif $obj->result == -1}{#already_submitted#}{else}{#already_submitted#}{/if}</h4>
+        <h4>{if $obj->result == 1}{#successful_submission#}{elseif $obj->result == -1}{#already_submitted#}{else}{#fail_submission#}{/if}</h4>
     </article>
 </section>

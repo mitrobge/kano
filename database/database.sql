@@ -190,6 +190,7 @@ CREATE TABLE survey_questions_characteristics_description (
 
 DELETE FROM survey_answers;
 alter table survey_answers add column `customer_id`  INT NOT NULL;
+alter table survey_answers add UNIQUE KEY idx_customer_characteristic_id (customer_id, characteristic_id);
 
 DROP TABLE customer;
 

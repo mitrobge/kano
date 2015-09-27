@@ -13,7 +13,7 @@ class DatabaseHandler
     // Return an initialized database handler 
     private static function GetHandler()
     {
-        // Create a database connection only if one doesn’t already exist
+        // Create a database connection only if one doesnï¿½t already exist
         if (!isset(self::$_mHandler))
         {
             // Execute code catching potential exceptions
@@ -139,6 +139,42 @@ class DatabaseHandler
         return $result;
     }
 
+    // Wrapper method for PDOStatement::execute()
+    public static function ExecuteOutput($sqlQuery, $params = null)
+    {
+        $result = null;
+        // Try to execute an SQL query or a stored procedure
+        try
+        {
+            // Get the database handler
+            $database_handler = self::GetHandler();
+
+            // Prepare the query for execution
+            $statement_handler = $database_handler->prepare($sqlQuery);
+
+            $statement_handler->bindParam(1, $params[':email'], PDO::PARAM_STR, 256);
+            $statement_handler->bindParam(2, $params[':survey_id'], PDO::PARAM_INT, 10);
+            $statement_handler->bindParam(3, $params[':qid'], PDO::PARAM_INT, 10);
+            $statement_handler->bindParam(4, $params[':pos'], PDO::PARAM_INT, 10);
+            $statement_handler->bindParam(5, $params[':neg'], PDO::PARAM_INT, 10);
+            $statement_handler->bindParam(6, $result, PDO::PARAM_INT, 10);
+
+            // Execute query
+            $statement_handler->execute();
+
+            //var_dump($result);
+            echo "The return values is:". $result;
+        }
+            // Trigger an error if an exception was thrown when executing the SQL query
+        catch(PDOException $e)
+        {
+            // Close the database handler and trigger an error
+            self::Close();
+            trigger_error($e->getMessage(), E_USER_ERROR);
+        }
+
+        return $result;
+    }
     // Return the first column value from a row
     public static function GetOne($sqlQuery, $params = null)
     {

@@ -1282,13 +1282,14 @@ class Surveys
                                               $characteristicId, $positiveAnswer, $negativeAnswer)
     {
         // Build SQL query
-        $sql = 'CALL survey_submit_answer(:email, :survey_id, :qid, :pos, :neg)';
+        $sql = 'CALL survey_submit_answer(:email, :survey_id, :qid, :pos, :neg, @res)';
 
         // Build the parameters array
         $params = array(':email' => $customerEmail, ':survey_id' => $surveyId,
-            ':qid' => $characteristicId, ':pos' => $positiveAnswer, ':neg' => $negativeAnswer);
+            ':qid' => $characteristicId, ':pos' => $positiveAnswer, ':neg' => $negativeAnswer, '?');
 
-        DatabaseHandler::Execute($sql, $params);
+        $result = DatabaseHandler::ExecuteOutput($sql, $params);
+        return $result;
     }
 
 }

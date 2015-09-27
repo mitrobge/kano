@@ -51,11 +51,9 @@ class SubmitSurvey
             }
 
             //echo $email.",".$sid.",".$value.",".$positiveAnswer.",".$negativeAnswer;
-            Surveys::SubmitSurveyAnswer($email, $sid, $value, $positiveAnswer, $negativeAnswer);
+            $this->result = Surveys::SubmitSurveyAnswer($email, $sid, $value, $positiveAnswer, $negativeAnswer);
+
         }
-
-
-        $this->result  = 1;
 
     }
 }
