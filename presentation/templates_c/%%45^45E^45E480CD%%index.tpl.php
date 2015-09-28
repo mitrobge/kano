@@ -1,8 +1,10 @@
-<?php /* Smarty version 2.6.22, created on 2015-09-22 22:37:12
+<?php /* Smarty version 2.6.22, created on 2015-09-29 01:08:20
          compiled from index.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'load_presentation_object', 'index.tpl', 2, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'load_presentation_object', 'index.tpl', 2, false),array('function', 'config_load', 'index.tpl', 4, false),array('modifier', 'cat', 'index.tpl', 4, false),)), $this); ?>
 <?php echo smarty_function_load_presentation_object(array('filename' => 'index','assign' => 'obj'), $this);?>
+
+<?php echo smarty_function_config_load(array('file' => ((is_array($_tmp=((is_array($_tmp="/opt/lampp/htdocs/kano/properties/messages_")) ? $this->_run_mod_handler('cat', true, $_tmp, $this->_tpl_vars['obj']->mActiveLang) : smarty_modifier_cat($_tmp, $this->_tpl_vars['obj']->mActiveLang)))) ? $this->_run_mod_handler('cat', true, $_tmp, ".txt") : smarty_modifier_cat($_tmp, ".txt"))), $this);?>
 
 <!DOCTYPE html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
@@ -78,21 +80,30 @@ assets/js/actions.js"></script>
 
 </head>
 <body>
-<?php if ($this->_tpl_vars['obj']->mContentsCell != "submitsurvey.tpl"): ?>
+  
+    <?php if ($this->_tpl_vars['obj']->mActiveLang == 'gr'): ?>
+    <script type="text/javascript" src="assets/js/jquery.validate.js"></script>
+    <?php else: ?>
+    <script type="text/javascript" src="assets/js/jquery.validate.en.js"></script>
+    <?php endif; ?>
+
 <section class="row">
     <article class="grid_12">
         <ul id="top_nav">
         <li class="last">
-        	<ul id="lang">
-        		<li class="gr">Ελληνικά</li>
-        		<li class="en">English</li>
+            <ul id="lang">
+        		<li class="gr"><?php echo $this->_config[0]['vars']['gr']; ?>
+</li>
+        		<li class="en"><?php echo $this->_config[0]['vars']['en']; ?>
+</li>
         	</ul>
-        	<a style="padding-left:6px;" id="change" href="<?php echo $this->_tpl_vars['obj']->mLinks['toChangeLang']; ?>
-"><?php if ($this->_tpl_vars['obj']->mActiveLang == 'gr'): ?>Change<?php else: ?>Αλλαγή<?php endif; ?></a>
+            <a style="padding-left:6px; font-size: 12px;" id="change" href="<?php echo $this->_tpl_vars['obj']->mLinks['toChangeLang']; ?>
+"><?php echo $this->_config[0]['vars']['change']; ?>
+</a>
         </li>
-      </ul>
+        </ul>
         <a href="<?php echo $this->_tpl_vars['obj']->mUrl; ?>
-"><h1>Kano Model</h1></a>
+"><h3>Kano Model</h3></a>
     </article>
 </section>
 <section class="row">
@@ -108,12 +119,19 @@ assets/js/actions.js"></script>
         </ul>
     </article>
 </section>
-<?php endif; ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => $this->_tpl_vars['obj']->mContentsCell, 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
+
+
+<footer><?php echo $this->_config[0]['vars']['email']; ?>
+: <?php echo $this->_tpl_vars['obj']->owner_data[0]['email']; ?>
+, <?php echo $this->_config[0]['vars']['mobile']; ?>
+: <?php echo $this->_tpl_vars['obj']->owner_data[0]['mobile_numebr']; ?>
+</footer>
+
 
 </body>
 </html>

@@ -36,22 +36,22 @@ CREATE TABLE survey (
     survey_sdate        DATETIME     NOT NULL,
     survey_edate        DATETIME     NOT NULL,
     added_on            DATETIME     NOT NULL,
-    is_active           BOOLEAN NOT NULL DEFAULT TRUE,
     sorting_id          INT          NOT NULL DEFAULT 0,
     PRIMARY KEY (survey_id)
 );
 
 CREATE TABLE survey_description (
-    survey_id          INT          NOT NULL AUTO_INCREMENT,
-    language_id        INT          NOT NULL,
-    name        VARCHAR(32)  NOT NULL,
-    description TEXT         NOT NULL,
+    survey_id           INT          NOT NULL AUTO_INCREMENT,
+    language_id         INT          NOT NULL,
+    name                VARCHAR(32)  NOT NULL,
+    is_active           BOOLEAN      NOT NULL DEFAULT TRUE,
+    description TEXT    NOT NULL,
     PRIMARY KEY (survey_id,language_id)
 );
 
 CREATE TABLE survey_category (
     survey_id           INT         NOT NULL,
-    category_id          INT         NOT NULL,
+    category_id         INT         NOT NULL,
     PRIMARY KEY (survey_id, category_id)
 );
 
@@ -62,10 +62,11 @@ CREATE TABLE survey_questions_characteristics (
 );
 
 CREATE TABLE survey_questions_characteristics_description (
-    question_characteristic_id          INT             NOT NULL AUTO_INCREMENT,
-    language_id                         INT             NOT NULL,
-    question_characteristic_name        VARCHAR(32)     NOT NULL,
-    PRIMARY KEY (question_characteristic_id, language_id)
+    question_characteristic_id      INT             NOT NULL,
+    language_id                     INT             NOT NULL,
+    question                        VARCHAR(200)    NOT NULL,
+    is_positive                     BOOLEAN         NOT NULL DEFAULT TRUE,
+    PRIMARY KEY (question_characteristic_id, language_id, is_positive)
 );
 
 CREATE TABLE survey_customers_characteristics (
@@ -75,7 +76,7 @@ CREATE TABLE survey_customers_characteristics (
 );
 
 CREATE TABLE survey_customers_characteristics_description (
-    customers_characteristic_id      INT             NOT NULL,
+    customers_characteristic_id     INT             NOT NULL,
     language_id                     INT             NOT NULL,
     customer_characteristic_name    VARCHAR(32)     NOT NULL,
     PRIMARY KEY (customers_characteristic_id, language_id)
@@ -83,12 +84,14 @@ CREATE TABLE survey_customers_characteristics_description (
 
 CREATE TABLE survey_answers (
     answer_id                   INT             NOT NULL AUTO_INCREMENT,
+    customer_id			INT 		NOT NULL,
     survey_id                   INT             NOT NULL,
     characteristic_id           INT             NOT NULL,
     characteristic_answer_pos   INT             NOT NULL,
     characteristic_answer_neg   INT             NOT NULL,
     added_on                    DATETIME        NOT NULL,
-    PRIMARY KEY (answer_id)
+    PRIMARY KEY (answer_id),
+    UNIQUE KEY idx_customer_characteristic_id (customer_id, characteristic_id)
 );
 
 CREATE TABLE country (
@@ -99,37 +102,6 @@ CREATE TABLE country (
     address_format_id     INT             NOT NULL,
     PRIMARY KEY (country_id),
     KEY IDX_COUNTRY_NAME (name)
-);
-
-CREATE TABLE customer (
-    customer_id             INT             NOT NULL AUTO_INCREMENT,
-    created_on              DATETIME        NOT NULL,
-    gender                  CHAR(1)         NOT NULL,
-    first_name              VARCHAR(32)     NOT NULL,
-    last_name               VARCHAR(32)     NOT NULL,
-    nickname                VARCHAR(32),
-    email                   VARCHAR(96),
-    password                VARCHAR(64)     NOT NULL,
-    birthday                DATETIME        DEFAULT '0000-00-00 00:00:00' NOT NULL,
-    street_address          VARCHAR(64)     NOT NULL,
-    city                    VARCHAR(32)     NOT NULL,
-    state_id                INT             ,
-    postcode                VARCHAR(10)     NOT NULL,
-    country_id              INT             ,
-    shipping_region_id      INT             ,
-    company                 VARCHAR(64),
-    phone                   VARCHAR(32)     NOT NULL,
-    mobile                  VARCHAR(32)     NOT NULL,
-    company_name            VARCHAR(64),
-    company_address         VARCHAR(64),
-    profession              VARCHAR(64),
-    vat_registration        VARCHAR(16),
-    tax_office              VARCHAR(32),
-    newsletter              CHAR(1),
-    password_recover_id     VARCHAR(32),
-    password_recover_start  DATETIME,
-    PRIMARY KEY (customer_id),
-    UNIQUE KEY idx_customer_email (email)
 );
 
 CREATE TABLE administrator (
@@ -173,27 +145,6 @@ CREATE TABLE uploaded_files (
     PRIMARY KEY (file_id)
 );
 
--- changes 21/09/2015--
-drop table survey_questions_characteristics_description;
-
-CREATE TABLE survey_questions_characteristics_description (
-  question_characteristic_id          INT             NOT NULL AUTO_INCREMENT,
-  language_id                         INT             NOT NULL,
-  question        VARCHAR(200)     NOT NULL,
-  is_positive                         BOOLEAN NOT NULL DEFAULT TRUE,
-  PRIMARY KEY (question_characteristic_id, language_id, is_positive)
-);
-
--- changes 21/09/2015--
-
--- changes 23/09/2015--
-
-DELETE FROM survey_answers;
-alter table survey_answers add column `customer_id`  INT NOT NULL;
-alter table survey_answers add UNIQUE KEY idx_customer_characteristic_id (customer_id, characteristic_id);
-
-DROP TABLE customer;
-
 CREATE TABLE customer (
   customer_id             INT             NOT NULL AUTO_INCREMENT,
   email                   VARCHAR(96)    NOT NULL,
@@ -210,12 +161,6 @@ CREATE TABLE survey_owner (
   PRIMARY KEY (id),
   UNIQUE KEY idx_customer_email (email)
 );
-
-INSERT INTO survey_owner (id, email, address, phone_number, mobile_numebr)
-VALUES (1, 'admin@eparxis.com', 'Πανεπιστημίου 124', '2109012345', '6977000000');
-
-
--- changes 23/09/2015--
 
 -- Change DELIMITER to $$
 DELIMITER $$
@@ -678,6 +623,14 @@ BEGIN
     AND language_id = inLanguageId;
 END$$
 
+CREATE PROCEDURE surveys_get_survey_isactive(IN inSurveyId INT, IN inLanguageId INT)
+BEGIN
+    SELECT 	is_active
+    FROM	survey_description
+    WHERE	survey_id = inSurveyId
+    AND language_id = inLanguageId;
+END$$
+
 CREATE PROCEDURE surveys_get_survey_details(IN inSurveyId INT, IN inLanguageId INT)
 BEGIN
     SELECT       s.survey_id, sd.name, sd.description
@@ -839,33 +792,41 @@ BEGIN
 END$$
 
 CREATE PROCEDURE surveys_get_active_surveys(IN inLanguageId INT)
-  BEGIN
-    SELECT      s.survey_id, d.name, d.description
+BEGIN
+    SELECT      s.survey_id, d.name, d.description, d.is_active
     FROM        survey s
-      JOIN        survey_description d on d.survey_id = s.survey_id
+    JOIN        survey_description d on d.survey_id = s.survey_id
     WHERE       d.language_id = inLanguageId
-                AND now() between survey_sdate and s.survey_edate
+    AND now() between survey_sdate and s.survey_edate
     ORDER BY    s.sorting_id, s.survey_id;
 END$$
 
 CREATE PROCEDURE surveys_get_survey_data(IN surveyId INT, IN inLanguageId INT)
-  BEGIN
+BEGIN
     SELECT s.survey_id id, d.name, d.description, sqc.question_characteristic_id qid, sqcd.question, sqcd.is_positive
     FROM survey s join kano.survey_description d on d.survey_id = s.survey_id
-      join survey_questions_characteristics sqc on sqc.survey_id = s.survey_id
-      join kano.survey_questions_characteristics_description sqcd on sqcd.question_characteristic_id = sqc.question_characteristic_id
-      and sqcd.language_id = d.language_id
-      and d.language_id = inLanguageId and s.survey_id = surveyId
+    join survey_questions_characteristics sqc on sqc.survey_id = s.survey_id
+    join kano.survey_questions_characteristics_description sqcd on sqcd.question_characteristic_id = sqc.question_characteristic_id
+    and sqcd.language_id = d.language_id
+    and d.language_id = inLanguageId and s.survey_id = surveyId
     order by qid, is_positive desc;
-  END$$
+END$$
+
+CREATE PROCEDURE surveys_get_survey_questions(IN surveyId INT, IN inLanguageId INT)
+BEGIN
+    SELECT language_id, question_characteristic_id qid, question, is_positive  
+    FROM  survey_questions_characteristics_description 
+    WHERE language_id = inLanguageId
+    ORDER BY qid;
+END$$
 
 CREATE PROCEDURE surveys_get_customer_survey_answers(IN surveyId INT, IN customerEmail VARCHAR(50))
-  BEGIN
+BEGIN
     select sa.answer_id, sa.survey_id, sa.characteristic_id, sa.characteristic_answer_pos,
-      sa.characteristic_answer_neg, sa.added_on, sa.customer_id
+    sa.characteristic_answer_neg, sa.added_on, sa.customer_id
     from kano.survey_answers sa join kano.customer c on sa.customer_id = c.customer_id
     where sa.survey_id = surveyId and c.email = customerEmail;
-  END$$
+END$$
 
 CREATE PROCEDURE survey_submit_answer(IN customerEmail VARCHAR(50),
                                       IN surveyId INT,
@@ -905,12 +866,85 @@ CREATE PROCEDURE survey_submit_answer(IN customerEmail VARCHAR(50),
     set result = 1;
   END$$
 
-
 CREATE PROCEDURE surveys_survey_owner_data()
-  BEGIN
+BEGIN
     select survey_owner.email, survey_owner.address, survey_owner.phone_number, survey_owner.mobile_numebr from survey_owner;
-  END$$
+END$$
 
+CREATE PROCEDURE surveys_get_survey_question(IN inSurveyId INT, IN inQuestionCharacteristicId INT, IN inLanguageId INT)
+BEGIN
+    SELECT * FROM survey_questions_characteristics_description sqcd 
+    INNER JOIN survey_questions_characteristics sqc 
+    ON sqcd.question_characteristic_id=sqc.question_characteristic_id 
+    WHERE sqc.survey_id = inSurveyId AND sqcd.question_characteristic_id = inQuestionCharacteristicId AND sqcd.language_id = inLanguageId;
+END$$
+
+CREATE PROCEDURE surveys_set_survey_name(IN inSurveyId INT, 
+    IN inSurveyName VARCHAR(128), 
+    IN inSurveyDescription MEDIUMTEXT,
+    IN inIsActive BOOLEAN,
+    IN inLanguageId INT)
+BEGIN
+    DECLARE surveyId INT;
+
+    SELECT  survey_id
+    FROM    survey_description
+    WHERE   survey_id = inSurveyId
+    AND language_id = inLanguageId
+    INTO    surveyId;
+
+    IF surveyId IS NOT NULL THEN
+        UPDATE  survey_description
+        SET     name = inSurveyName,
+        description = inSurveyDescription,
+        is_active = inIsActive
+        WHERE   survey_id = inSurveyId
+        AND language_id = inLanguageId; 
+    ELSE
+        INSERT
+        INTO    survey_description (survey_id, language_id, name, description)
+        VALUES  (inSurveyId, inLanguageId, inSurveyName, inSurveyDescription);
+    END IF;
+END$$
+
+CREATE PROCEDURE surveys_update_survey_question(IN inQuestionId INT,
+                                         IN inQuestion VARCHAR(200),
+                                         IN inIsPositive BOOLEAN,
+                                         IN inLanguageId INT)
+BEGIN
+	DECLARE questionId INT;
+
+    SELECT  question_characteristic_id          
+    FROM survey_questions_characteristics_description 
+    WHERE   question_characteristic_id = inQuestionId
+            AND language_id = inLanguageId
+    INTO    questionId;
+
+    IF questionId IS NULL THEN
+        INSERT
+        INTO    survey_questions_characteristics_description (question_characteristic_id, language_id, question, is_positive)
+        VALUES  (inQuestionId, inLanguageId, inQuestion, inIsPositive);
+    ELSE
+        UPDATE  survey_questions_characteristics_description
+        SET     question = inQuestion
+        WHERE   question_characteristic_id = inQuestionId
+                AND language_id = inLanguageId;
+    END IF;
+END$$
+
+-- Create catalog_add_category_attribute stored procedure
+CREATE PROCEDURE surveys_add_survey_question(IN inSurveyId INT)
+BEGIN
+    DECLARE questionId INT;
+        
+    INSERT
+	INTO	survey_questions_characteristics (survey_id)
+	VALUES	(inSurveyId);
+        
+    SELECT  LAST_INSERT_ID() INTO questionId;
+
+    SELECT  questionId; 
+END$$
 
 -- Change back DELIMITER to ;
 DELIMITER ;

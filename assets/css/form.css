@@ -104,9 +104,9 @@ input:hover[type="reset"]                                   { border-color:#000;
 .success:hover                                              { border-color:#25A35A; background-color:#25A35A; }
 .success:after                                              { content:'\2714'; width:20px; height:20px; line-height:30px; position:absolute; top:5px; right:10px; }
 
-.error                                                      { padding:0 36px 0 20px; position:relative; background-color:#E74C3C; border-color:#E74C3C; cursor:default; }
-.error:after                                                { content:'\00D7'; width:20px; height:20px; line-height:30px; position:absolute; top:5px; right:8px; }
-.error:hover                                                { background-color:#E74C3C; border-color:#E74C3C; }
+.error                                                      { position:relative; border-color:#E74C3C; cursor:default; }
+.error:after                                                { width:120px; height:20px; line-height:30px; position:relative; top:0px; right:8px; }
+.error:hover                                                { border-color:#E74C3C; }
 
 @keyframes spinner {
     0%                                                      { transform:rotate(0deg); -webkit-transform:rotate(0deg); }

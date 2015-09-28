@@ -1,6 +1,7 @@
 {* smarty *}
 {load_presentation_object filename="index" assign="obj"}
-{config_load file="../../properties/messages_"|cat:$obj->mActiveLang|cat:".txt"}
+{*{config_load file="../../properties/messages_"|cat:$obj->mActiveLang|cat:".txt"}*}
+{config_load file="/opt/lampp/htdocs/kano/properties/messages_"|cat:$obj->mActiveLang|cat:".txt"}
 <!DOCTYPE html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -61,6 +62,12 @@
 
 </head>
 <body>
+  
+    {if $obj->mActiveLang eq "gr"}
+    <script type="text/javascript" src="assets/js/jquery.validate.js"></script>
+    {else}
+    <script type="text/javascript" src="assets/js/jquery.validate.en.js"></script>
+    {/if}
 
 <section class="row">
     <article class="grid_12">
@@ -73,12 +80,9 @@
             <a style="padding-left:6px; font-size: 12px;" id="change" href="{$obj->mLinks.toChangeLang}">{#change#}</a>
         </li>
         </ul>
-        {if $obj->mContentsCell neq "survey.tpl"}
         <a href="{$obj->mUrl}"><h3>Kano Model</h3></a>
-        {/if}
     </article>
 </section>
-
 <section class="row">
     <article class="grid_4">
       
@@ -86,11 +90,10 @@
 
 
         <ul>
-            <li><a href="{$obj->mLinks.toAllSurveys}">{#kano_surveys#}</a></li>
+            <li><a href="{$obj->mLinks.toAllSurveys}">{if $obj->mActiveLang eq "gr"}Έρευνες ΚΑΝΟ{else}KANO Surveys{/if}</a></li>
         </ul>
     </article>
 </section>
-
 {include file=$obj->mContentsCell}
 
 

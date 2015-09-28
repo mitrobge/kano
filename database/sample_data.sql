@@ -121,10 +121,6 @@ INSERT INTO survey_answers (answer_id, survey_id,characteristic_id, characterist
     (8, 1, 2, 2, 2, '2015-01-15'),
     (9, 1, 3, 4, 2, '2015-01-15');
 
-INSERT INTO customer (customer_id, created_on, gender, first_name, last_name, email, password, street_address, city, postcode, state_id, phone, mobile) VALUES
-        (1, NOW(), 'm', 'Dimitris', 'Mitrovgenis', 'dmitrovgenis@eparxis.com', 'd3412c2a20d033149b775ce49de2ae56c750a9a3', 'Akrothoon 28', 'Athens', '11142', 1, '2130040156', '6932009943');
-        
-
 INSERT INTO country VALUES 
     (1,'Afghanistan','AF','AFG','1'),
     (2,'Albania','AL','ALB','1'),
@@ -400,3 +396,6 @@ INSERT INTO administrator_permission (administrator_id, permission_id) VALUES
     (1, 13);
 
 update kano.survey set survey.survey_edate = now() + interval 2 month where survey.survey_id < 3;
+
+INSERT INTO survey_owner (id, email, address, phone_number, mobile_numebr)
+VALUES (1, 'admin@eparxis.com', 'Πανεπιστημίου 124', '2109012345', '6977000000');

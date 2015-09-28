@@ -1,40 +1,21 @@
 {* smarty *}
 {load_presentation_object filename="survey" assign="obj"}
 
-{literal}
-<script language="JavaScript" type="text/javascript">
-
-    function validateEmail(form)
-    {
-        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if(form.email.value.match(mailformat))
-        {
-            form.email.focus();
-            return true;
-        }
-        else
-        {
-            alert("{/literal}{#invalid_email#}{literal}");
-            form.email.focus();
-            return false;
-        }
-    }
-
-</script>
-{/literal}
+<script type="text/javascript" src="assets/js/survey.js"></script>
 
 <section class="row">
     <article class="grid_7">
-        <h4>{#survey#}</h4>
+        <h4><strong>{if $obj->mActiveLang eq "gr"}Έρευνα: {else}Survey:{/if}</strong> {$obj->data[0].name}</h4>
+        <hr>
     </article>
 </section>
 <section class="row">
     <article class="grid_6">
-        <form id="form1" name="submitsurveyForm" action="{$obj->mLinkToSubmitSurvey}" method="post" onsubmit="return validateEmail(this)">
+        <form id="submitsurveyForm" name="submitsurveyForm" action="{$obj->mLinkToSubmitSurvey}" method="post" onsubmit="return validateEmail(this)">
             <input type="hidden" name="sid" value="{$obj->data[0].id}"/>
             {foreach from=$obj->data item=item}
 
-                <p>{$item.question}</p>
+                <p><strong>{if $item.is_positive}{$item.qid}-1. {else}{$item.qid}-2. {/if}{$item.question}</strong></p>
                 <fieldset>
                     <div class="radio">
                     <span>
@@ -58,15 +39,16 @@
                         <label for="r{$item.qid}{$item.is_positive}5" onclick="">{#ans5#}</label>
                     </span>
                     </div>
-                </fieldset>
+                </fieldset> 
+                {if $item.is_positive eq 0}<hr>{/if}
             {/foreach}
 
             <fieldset>
-                <label for="email">{#email#} :</label>
-                <input type="text" name="email" id="email" tabindex="1" />
+                <label for="email"><strong>Διεύθυνση Email:* </strong></label>
+                <input type="email" name="email" id="email" placeholder="Email" tabindex="1"pattern="[0-9\-.\(\)\+\s]+" />
             </fieldset>
             <fieldset>
-                <input type="submit" name="submit" id="submitbtn" tabindex="14" value="Αποστολή" class="first" />
+                <input class="btn" type="submit" name="submit" id="submitbtn" tabindex="14" value="Αποστολή" class="first" />
             </fieldset>
 
         </form>
