@@ -201,6 +201,20 @@ CREATE TABLE customer (
   UNIQUE KEY idx_customer_email (email)
 );
 
+CREATE TABLE survey_owner (
+  id INT NOT NULL AUTO_INCREMENT,
+  email VARCHAR(96) NOT NULL,
+  address VARCHAR(96) DEFAULT NULL,
+  phone_number VARCHAR(10) DEFAULT NULL,
+  mobile_numebr VARCHAR(10) DEFAULT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY idx_customer_email (email)
+);
+
+INSERT INTO survey_owner (id, email, address, phone_number, mobile_numebr)
+VALUES (1, 'admin@eparxis.com', 'Πανεπιστημίου 124', '2109012345', '6977000000');
+
+
 -- changes 23/09/2015--
 
 -- Change DELIMITER to $$
@@ -890,6 +904,13 @@ CREATE PROCEDURE survey_submit_answer(IN customerEmail VARCHAR(50),
     COMMIT;
     set result = 1;
   END$$
+
+
+CREATE PROCEDURE surveys_survey_owner_data()
+  BEGIN
+    select survey_owner.email, survey_owner.address, survey_owner.phone_number, survey_owner.mobile_numebr from survey_owner;
+  END$$
+
 
 -- Change back DELIMITER to ;
 DELIMITER ;

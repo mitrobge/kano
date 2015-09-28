@@ -1292,5 +1292,13 @@ class Surveys
         return $result;
     }
 
+    public static function GetOwnerData()
+    {
+        // Build SQL query
+        $sql = 'CALL surveys_survey_owner_data()';
+
+        return DatabaseHandler::GetAll($sql);
+    }
+
 }
 ?>

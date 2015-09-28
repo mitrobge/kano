@@ -62,7 +62,7 @@
             {/foreach}
 
             <fieldset>
-                <label for="email">{#email#}</label>
+                <label for="email">{#email#} :</label>
                 <input type="text" name="email" id="email" tabindex="1" />
             </fieldset>
             <fieldset>

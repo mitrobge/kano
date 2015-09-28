@@ -93,5 +93,9 @@
 
 {include file=$obj->mContentsCell}
 
+
+<footer>{#email#}: {$obj->owner_data[0].email}, {#mobile#}: {$obj->owner_data[0].mobile_numebr}</footer>
+
+
 </body>
 </html>
