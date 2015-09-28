@@ -1286,9 +1286,9 @@ class Surveys
 
         // Build the parameters array
         $params = array(':email' => $customerEmail, ':survey_id' => $surveyId,
-            ':qid' => $characteristicId, ':pos' => $positiveAnswer, ':neg' => $negativeAnswer, '?');
+            ':qid' => $characteristicId, ':pos' => $positiveAnswer, ':neg' => $negativeAnswer);
 
-        $result = DatabaseHandler::ExecuteOutput($sql, $params);
+        $result = DatabaseHandler::ExecuteSingleOutput($sql, $params);
         return $result;
     }
 

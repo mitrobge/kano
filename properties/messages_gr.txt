@@ -1,3 +1,15 @@
+gr=Ελληνικά
+en=Αγγλικά
+change=Αλλαγή
+kano_surveys=Έρευνες ΚΑΝΟ
+survey=Έρευνα
+ans1=Μου αρέσει έτσι
+ans2=Έτσι πρέπει να είναι
+ans3=Είμαι Ουδέτερος
+ans4=Μπορώ να το ανεχθώ
+ans5=Δεν μου αρέσει έτσι
+email=Διεύθυνση Email :
 successful_submission=Επιτυχής καταχώρηση
 fail_submission=Σφάλμα στην καταχώρηση
 already_submitted=Έχετε ήδη συμπληρώσει την έρευνα
+invalid_email=Το email που συμπληρώσατε δεν είναι έγκυρο

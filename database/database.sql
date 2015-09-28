@@ -857,7 +857,8 @@ CREATE PROCEDURE survey_submit_answer(IN customerEmail VARCHAR(50),
                                       IN surveyId INT,
                                       IN characteristicId INT,
                                       IN positiveAnswer INT,
-                                      IN negativeAnswer INT)
+                                      IN negativeAnswer INT,
+                                      OUT result INT)
   BEGIN
 
     DECLARE cId int;
@@ -872,6 +873,8 @@ CREATE PROCEDURE survey_submit_answer(IN customerEmail VARCHAR(50),
 
     START TRANSACTION;
 
+    set result = 0;
+
     select customer_id INTO cId from customer where email =  customerEmail;
 
     if(cId is null)
@@ -885,6 +888,7 @@ CREATE PROCEDURE survey_submit_answer(IN customerEmail VARCHAR(50),
                                characteristic_answer_neg, added_on, customer_id)
     VALUES (surveyId, characteristicId, positiveAnswer, negativeAnswer, now(), cId);
     COMMIT;
+    set result = 1;
   END$$
 
 -- Change back DELIMITER to ;

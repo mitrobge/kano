@@ -140,30 +140,30 @@ class DatabaseHandler
     }
 
     // Wrapper method for PDOStatement::execute()
-    public static function ExecuteOutput($sqlQuery, $params = null)
+    public static function ExecuteSingleOutput($sqlQuery, $params = null)
     {
-        $result = null;
+        $result = 0;
         // Try to execute an SQL query or a stored procedure
         try
         {
+
             // Get the database handler
             $database_handler = self::GetHandler();
 
             // Prepare the query for execution
             $statement_handler = $database_handler->prepare($sqlQuery);
 
-            $statement_handler->bindParam(1, $params[':email'], PDO::PARAM_STR, 256);
-            $statement_handler->bindParam(2, $params[':survey_id'], PDO::PARAM_INT, 10);
-            $statement_handler->bindParam(3, $params[':qid'], PDO::PARAM_INT, 10);
-            $statement_handler->bindParam(4, $params[':pos'], PDO::PARAM_INT, 10);
-            $statement_handler->bindParam(5, $params[':neg'], PDO::PARAM_INT, 10);
-            $statement_handler->bindParam(6, $result, PDO::PARAM_INT, 10);
+            // Execute query
+            $statement_handler->execute($params);
 
+            $statement_handler = $database_handler->prepare("select @res");
             // Execute query
             $statement_handler->execute();
+            $res = $database_handler->query("select @res;")->fetchColumn(0);
 
-            //var_dump($result);
-            echo "The return values is:". $result;
+
+            return $res[0];
+
         }
             // Trigger an error if an exception was thrown when executing the SQL query
         catch(PDOException $e)

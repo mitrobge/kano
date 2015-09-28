@@ -21,6 +21,12 @@ class SubmitSurvey
             return;
 
         $email = $_POST['email'];
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $this->result = -2;
+            return;
+        }
+
         $sid = $_POST['sid'];
 
 
@@ -52,6 +58,9 @@ class SubmitSurvey
 
             //echo $email.",".$sid.",".$value.",".$positiveAnswer.",".$negativeAnswer;
             $this->result = Surveys::SubmitSurveyAnswer($email, $sid, $value, $positiveAnswer, $negativeAnswer);
+            if($this->result != 1){
+                break;
+            }
 
         }
 
