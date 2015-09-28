@@ -13,7 +13,7 @@ class DatabaseHandler
     // Return an initialized database handler 
     private static function GetHandler()
     {
-        // Create a database connection only if one doesn’t already exist
+        // Create a database connection only if one doesnï¿½t already exist
         if (!isset(self::$_mHandler))
         {
             // Execute code catching potential exceptions
@@ -139,6 +139,42 @@ class DatabaseHandler
         return $result;
     }
 
+    // Wrapper method for PDOStatement::execute()
+    public static function ExecuteSingleOutput($sqlQuery, $params = null)
+    {
+        $result = 0;
+        // Try to execute an SQL query or a stored procedure
+        try
+        {
+
+            // Get the database handler
+            $database_handler = self::GetHandler();
+
+            // Prepare the query for execution
+            $statement_handler = $database_handler->prepare($sqlQuery);
+
+            // Execute query
+            $statement_handler->execute($params);
+
+            $statement_handler = $database_handler->prepare("select @res");
+            // Execute query
+            $statement_handler->execute();
+            $res = $database_handler->query("select @res;")->fetchColumn(0);
+
+
+            return $res[0];
+
+        }
+            // Trigger an error if an exception was thrown when executing the SQL query
+        catch(PDOException $e)
+        {
+            // Close the database handler and trigger an error
+            self::Close();
+            trigger_error($e->getMessage(), E_USER_ERROR);
+        }
+
+        return $result;
+    }
     // Return the first column value from a row
     public static function GetOne($sqlQuery, $params = null)
     {

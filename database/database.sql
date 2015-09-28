@@ -190,6 +190,7 @@ CREATE TABLE survey_questions_characteristics_description (
 
 DELETE FROM survey_answers;
 alter table survey_answers add column `customer_id`  INT NOT NULL;
+alter table survey_answers add UNIQUE KEY idx_customer_characteristic_id (customer_id, characteristic_id);
 
 DROP TABLE customer;
 
@@ -199,6 +200,20 @@ CREATE TABLE customer (
   PRIMARY KEY (customer_id),
   UNIQUE KEY idx_customer_email (email)
 );
+
+CREATE TABLE survey_owner (
+  id INT NOT NULL AUTO_INCREMENT,
+  email VARCHAR(96) NOT NULL,
+  address VARCHAR(96) DEFAULT NULL,
+  phone_number VARCHAR(10) DEFAULT NULL,
+  mobile_numebr VARCHAR(10) DEFAULT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY idx_customer_email (email)
+);
+
+INSERT INTO survey_owner (id, email, address, phone_number, mobile_numebr)
+VALUES (1, 'admin@eparxis.com', 'Πανεπιστημίου 124', '2109012345', '6977000000');
+
 
 -- changes 23/09/2015--
 
@@ -856,7 +871,8 @@ CREATE PROCEDURE survey_submit_answer(IN customerEmail VARCHAR(50),
                                       IN surveyId INT,
                                       IN characteristicId INT,
                                       IN positiveAnswer INT,
-                                      IN negativeAnswer INT)
+                                      IN negativeAnswer INT,
+                                      OUT result INT)
   BEGIN
 
     DECLARE cId int;
@@ -871,6 +887,8 @@ CREATE PROCEDURE survey_submit_answer(IN customerEmail VARCHAR(50),
 
     START TRANSACTION;
 
+    set result = 0;
+
     select customer_id INTO cId from customer where email =  customerEmail;
 
     if(cId is null)
@@ -884,7 +902,15 @@ CREATE PROCEDURE survey_submit_answer(IN customerEmail VARCHAR(50),
                                characteristic_answer_neg, added_on, customer_id)
     VALUES (surveyId, characteristicId, positiveAnswer, negativeAnswer, now(), cId);
     COMMIT;
+    set result = 1;
   END$$
+
+
+CREATE PROCEDURE surveys_survey_owner_data()
+  BEGIN
+    select survey_owner.email, survey_owner.address, survey_owner.phone_number, survey_owner.mobile_numebr from survey_owner;
+  END$$
+
 
 -- Change back DELIMITER to ;
 DELIMITER ;

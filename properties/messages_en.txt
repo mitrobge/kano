@@ -1,3 +1,16 @@
+gr=Greek
+en=English
+change=Change
+kano_surveys=KANO Surveys
+survey=Survey
+ans1=I like it that way
+ans2=It must be that way
+ans3=I am neutral
+ans4=I can live with it that way
+ans5=I dislike it that whay
+email=Email
 successful_submission=Successful Submission
 fail_submission=Fail Submission
 already_submitted=You have already submitted the survey
+invalid_email=Invalid email
+mobile=Mobile Number

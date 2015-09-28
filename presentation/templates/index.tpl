@@ -1,5 +1,6 @@
 {* smarty *}
 {load_presentation_object filename="index" assign="obj"}
+{config_load file="../../properties/messages_"|cat:$obj->mActiveLang|cat:".txt"}
 <!DOCTYPE html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -66,10 +67,10 @@
         <ul id="top_nav">
         <li class="last">
             <ul id="lang">
-        		<li class="gr">Ελληνικά</li>
-        		<li class="en">English</li>
+        		<li class="gr">{#gr#}</li>
+        		<li class="en">{#en#}</li>
         	</ul>
-            <a style="padding-left:6px; font-size: 12px;" id="change" href="{$obj->mLinks.toChangeLang}">{if $obj->mActiveLang eq "gr"}Change{else}Αλλαγή{/if}</a>
+            <a style="padding-left:6px; font-size: 12px;" id="change" href="{$obj->mLinks.toChangeLang}">{#change#}</a>
         </li>
         </ul>
         {if $obj->mContentsCell neq "survey.tpl"}
@@ -77,7 +78,7 @@
         {/if}
     </article>
 </section>
-{if $obj->mContentsCell neq "survey.tpl"}
+
 <section class="row">
     <article class="grid_4">
       
@@ -85,12 +86,16 @@
 
 
         <ul>
-            <li><a href="{$obj->mLinks.toAllSurveys}">{if $obj->mActiveLang eq "gr"}Έρευνες ΚΑΝΟ{else}KANO Surveys{/if}</a></li>
+            <li><a href="{$obj->mLinks.toAllSurveys}">{#kano_surveys#}</a></li>
         </ul>
     </article>
 </section>
-{/if}
+
 {include file=$obj->mContentsCell}
+
+
+<footer>{#email#}: {$obj->owner_data[0].email}, {#mobile#}: {$obj->owner_data[0].mobile_numebr}</footer>
+
 
 </body>
 </html>

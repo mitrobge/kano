@@ -13,6 +13,7 @@ class Index
     public $mOrganizationCategories = null;
     public $mCategories;
     public $mUserIsLoggedIn;
+    public $owner_data;
 
 	// Class constructor
 	public function __construct()
@@ -87,7 +88,9 @@ class Index
         
         $this->mActiveLang = Language::GetName();
         $this->mPageTitle = $this->_GetPageTitle($this->mActiveLang);
+        $this->owner_data = Surveys::GetOwnerData();
 
+        //echo "email: ". $this->owner_data[0]['email'];
         
     }
 
