@@ -36,6 +36,7 @@ CREATE TABLE survey (
     survey_sdate        DATETIME     NOT NULL,
     survey_edate        DATETIME     NOT NULL,
     added_on            DATETIME     NOT NULL,
+    is_active           BOOLEAN NOT NULL DEFAULT TRUE,
     sorting_id          INT          NOT NULL DEFAULT 0,
     PRIMARY KEY (survey_id)
 );
@@ -44,7 +45,6 @@ CREATE TABLE survey_description (
     survey_id           INT          NOT NULL AUTO_INCREMENT,
     language_id         INT          NOT NULL,
     name                VARCHAR(32)  NOT NULL,
-    is_active           BOOLEAN      NOT NULL DEFAULT TRUE,
     description TEXT    NOT NULL,
     PRIMARY KEY (survey_id,language_id)
 );
@@ -623,14 +623,6 @@ BEGIN
     AND language_id = inLanguageId;
 END$$
 
-CREATE PROCEDURE surveys_get_survey_isactive(IN inSurveyId INT, IN inLanguageId INT)
-BEGIN
-    SELECT 	is_active
-    FROM	survey_description
-    WHERE	survey_id = inSurveyId
-    AND language_id = inLanguageId;
-END$$
-
 CREATE PROCEDURE surveys_get_survey_details(IN inSurveyId INT, IN inLanguageId INT)
 BEGIN
     SELECT       s.survey_id, sd.name, sd.description
@@ -793,10 +785,10 @@ END$$
 
 CREATE PROCEDURE surveys_get_active_surveys(IN inLanguageId INT)
 BEGIN
-    SELECT      s.survey_id, d.name, d.description, d.is_active
+    SELECT      s.survey_id, d.name, d.description, s.is_active
     FROM        survey s
     JOIN        survey_description d on d.survey_id = s.survey_id
-    WHERE       d.language_id = inLanguageId
+    WHERE       d.language_id = inLanguageId and s.is_active = 1
     AND now() between survey_sdate and s.survey_edate
     ORDER BY    s.sorting_id, s.survey_id;
 END$$

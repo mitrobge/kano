@@ -110,16 +110,6 @@ INSERT INTO survey_customers_characteristics_description (customers_characterist
     (7,1,'Χαρακτηριστικό πελάτη 7'),
     (7,2,'Characteristic customer 7');
 
-INSERT INTO survey_answers (answer_id, survey_id,characteristic_id, characteristic_answer_pos, characteristic_answer_neg, added_on) VALUES
-    (1, 1, 1, 2, 3, '2015-01-15'),
-    (2, 1, 2, 1, 5, '2015-01-15'),
-    (3, 1, 3, 4, 4, '2015-01-15'),
-    (4, 1, 1, 2, 1, '2015-01-15'),
-    (5, 1, 2, 2, 2, '2015-01-15'),
-    (6, 1, 3, 4, 2, '2015-01-15'),
-    (7, 1, 1, 2, 1, '2015-01-15'),
-    (8, 1, 2, 2, 2, '2015-01-15'),
-    (9, 1, 3, 4, 2, '2015-01-15');
 
 INSERT INTO country VALUES 
     (1,'Afghanistan','AF','AFG','1'),
