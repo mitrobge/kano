@@ -14,3 +14,4 @@ fail_submission=Σφάλμα στην καταχώρηση
 already_submitted=Έχετε ήδη συμπληρώσει την έρευνα
 invalid_email=Το email που συμπληρώσατε δεν είναι έγκυρο
 mobile=Τηλέφωνο επικοινωνίας
+submit=Αποστολή

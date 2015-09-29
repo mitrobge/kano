@@ -5,7 +5,7 @@
 
 <section class="row">
     <article class="grid_7">
-        <h4><strong>{if $obj->mActiveLang eq "gr"}Έρευνα: {else}Survey:{/if}</strong> {$obj->data[0].name}</h4>
+        <h4><strong>{#survey#}</strong> {$obj->data[0].name}</h4>
         <hr>
     </article>
 </section>
@@ -44,11 +44,11 @@
             {/foreach}
 
             <fieldset>
-                <label for="email"><strong>Διεύθυνση Email:* </strong></label>
-                <input type="email" name="email" id="email" placeholder="Email" tabindex="1"pattern="[0-9\-.\(\)\+\s]+" />
+                <label for="email"><strong>{#email#}:* </strong></label>
+                <input type="email" name="email" id="email" placeholder="Email" tabindex="1" pattern="[0-9\-.\(\)\+\s]+" />
             </fieldset>
             <fieldset>
-                <input class="btn" type="submit" name="submit" id="submitbtn" tabindex="14" value="Αποστολή" class="first" />
+                <input class="btn" type="submit" name="submit" id="submitbtn" tabindex="14" value="{#submit#}" class="first" />
             </fieldset>
 
         </form>

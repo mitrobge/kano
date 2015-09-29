@@ -14,3 +14,4 @@ fail_submission=Fail Submission
 already_submitted=You have already submitted the survey
 invalid_email=Invalid email
 mobile=Mobile Number
+submit=Submit
