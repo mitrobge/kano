@@ -59,9 +59,9 @@ INSERT INTO survey_questions_characteristics (question_characteristic_id, survey
         (2, 1),
         (3, 1),
         (4, 1),
-        (5, 2),
-        (6, 2),
-        (7, 2);
+        (5, 3),
+        (6, 3),
+        (7, 3);
 
 
 INSERT INTO survey_questions_characteristics_description (question_characteristic_id, language_id, question, is_positive) VALUES
@@ -85,30 +85,6 @@ INSERT INTO survey_questions_characteristics_description (question_characteristi
   (5,1,'Πως σας φαίνεται το ξενοδοχείο να μην δέχεται πιστωτική/χρεωστική κάρτα;', 0),
   (5,2,'How do you feel if the hotel accepts credit card?',1),
   (5,2,'How do you feel if the hotel does not accept credit card?', 0);
-
-INSERT INTO survey_customers_characteristics (customers_characteristic_id, survey_id) VALUES
-        (1, 1),
-        (2, 1),
-        (3, 1),
-        (4, 2),
-        (5, 2),
-        (6, 2);
-
-INSERT INTO survey_customers_characteristics_description (customers_characteristic_id, language_id, customer_characteristic_name) VALUES
-    (1,1,'Χαρακτηριστικό πελάτη 1'),
-    (1,2,'Characteristic customer 1'),
-    (2,1,'Χαρακτηριστικό πελάτη 2'),
-    (2,2,'Characteristic customer 2'),
-    (3,1,'Χαρακτηριστικό πελάτη 3'),
-    (3,2,'Characteristic customer 3'),
-    (4,1,'Χαρακτηριστικό πελάτη 4'),
-    (4,2,'Characteristic customer 4'),
-    (5,1,'Χαρακτηριστικό πελάτη 5'),
-    (5,2,'Characteristic customer 5'),
-    (6,1,'Χαρακτηριστικό πελάτη 6'),
-    (6,2,'Characteristic customer 6'),
-    (7,1,'Χαρακτηριστικό πελάτη 7'),
-    (7,2,'Characteristic customer 7');
 
 
 INSERT INTO country VALUES 
@@ -389,3 +365,69 @@ update kano.survey set survey.survey_edate = now() + interval 2 month where surv
 
 INSERT INTO survey_owner (id, email, address, phone_number, mobile_numebr)
 VALUES (1, 'admin@eparxis.com', 'Πανεπιστημίου 124', '2109012345', '6977000000');
+
+delete from survey;
+delete from survey_description;
+
+INSERT INTO survey (survey_id, survey_sdate, survey_edate, added_on, is_active, is_css) VALUES
+  (1, '2015-01-01','2015-12-31', '2014-12-31', 1, 0),
+  (2, '2014-01-01','2014-12-31', '2013-12-31', 1, 0),
+  (3, '2015-01-01','2015-12-31', '2014-12-31', 1, 0),
+  (4, '2015-01-01','2015-12-31', '2014-12-31', 1, 1),
+  (5, '2014-01-01','2016-12-31', '2013-12-31', 0, 1),
+  (6, '2015-02-01','2016-02-28', '2015-01-01', 1, 1);
+
+INSERT INTO survey_description (survey_id, language_id, name, description) VALUES
+  (1, 2, 'Kano Model Survey 2015a', 'Description of KANO Model survey 2015a'),
+  (1, 1, 'Kano Model Έρευνα 2015a', 'Περιγραφή για έρευνα ΚΑΝΟ 2015a'),
+  (2, 2, 'Kano Model Survey 2014', 'Description of KANO Model survey 2014'),
+  (2, 1, 'Kano Model Έρευνα 2014', 'Περιγραφή για έρευνα ΚΑΝΟ 2014'),
+  (3, 2, 'Kano Model Survey 2015b', 'Description of KANO Model survey 2015b'),
+  (3, 1, 'Kano Model Έρευνα 2015b', 'Περιγραφή για έρευνα KANO 2015b'),
+  (4, 2, 'CSS Model Survey 2015a', 'Description of CSS survey 2015a'),
+  (4, 1, 'CSS Model Έρευνα 2015a', 'Περιγραφή για έρευνα CSS 2015a'),
+  (5, 2, 'CSS Survey 2014', 'Description of CSS survey 2014'),
+  (5, 1, 'CSS Model Έρευνα 2014', 'Περιγραφή για έρευνα CSS 2014'),
+  (6, 2, 'CSS Survey 2015b', 'Description of CSS survey 2015b'),
+  (6, 1, 'CSS Έρευνα 2015b', 'Περιγραφή για έρευνα CSS 2015b');
+
+INSERT INTO survey_customers_characteristics (customers_characteristic_id, survey_id) VALUES
+  (1, 4),
+  (2, 4),
+  (3, 6),
+  (4, 6);
+
+
+INSERT INTO survey_customers_characteristics_description (customers_characteristic_id, language_id, customer_characteristic_name) VALUES
+  (1,1,'Ηλικία'),
+  (1,2,'Age'),
+  (2,1,'Φύλο'),
+  (2,2,'Sex'),
+  (3,1,'Τόπος Διαμονής'),
+  (3,2,'Place of residence'),
+  (4,1,'Ηλικία'),
+  (4,2,'Age');
+
+INSERT INTO survey_customers_characteristics_answers (customers_characteristic_id, language_id, answer) VALUES
+  (1, 1, '18-25'),
+  (1, 1, '26-45'),
+  (1, 1, '>45'),
+  (1, 2, '18-25'),
+  (1, 2, '26-45'),
+  (1, 2, '>45'),
+  (2, 1, 'Άνδρας'),
+  (2, 1, 'Γυναίκα'),
+  (2, 2, 'Male'),
+  (2, 2, 'Female'),
+  (3, 1, 'Ελλάδα'),
+  (3, 1, 'Εξωτερικό'),
+  (3, 2, 'Greece'),
+  (3, 2, 'Abroad'),
+  (4, 1, '18-25'),
+  (4, 1, '26-45'),
+  (4, 1, '46-60'),
+  (4, 1, '>60'),
+  (4, 2, '18-25'),
+  (4, 2, '26-45'),
+  (4, 2, '>60')
+;

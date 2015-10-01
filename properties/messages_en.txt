@@ -1,8 +1,12 @@
+kano_surveys=ΚΑΝΟ Surveys
+css_surveys=CSS Surveys
 gr=Greek
 en=English
 change=Change
 kano_surveys=KANO Surveys
 survey=Survey
+descr=Description
+active_survey_num=Number of active surveys
 ans1=I like it that way
 ans2=It must be that way
 ans3=I am neutral

@@ -1233,17 +1233,17 @@ class Surveys
         return DatabaseHandler::GetAll($sql, $params);
     }
 
-    public static function GetActiveSurveys($languageId = null)
+    public static function GetActiveSurveys($languageId = null, $isCss)
     {
         // Get current session's languageId if not specified
         if (is_null($languageId))
             $languageId = Language::Get();
 
         // Build SQL query
-        $sql = 'CALL surveys_get_active_surveys(:language_id)';
+        $sql = 'CALL surveys_get_active_surveys(:language_id, :is_css)';
 
         // Build the parameters array
-        $params = array(':language_id' => $languageId);
+        $params = array(':language_id' => $languageId, ':is_css' => $isCss);
 
         // Execute the query and return the results
         return DatabaseHandler::GetAll($sql, $params);
@@ -1300,5 +1300,31 @@ class Surveys
         return DatabaseHandler::GetAll($sql);
     }
 
+    public static function GetSurveyIsCss($surveyId)
+    {
+        // Build SQL query
+        $sql = 'CALL surveys_get_survey_iscss(:survey_id)';
+
+        $params = array(':survey_id' => $surveyId);
+
+        $result = DatabaseHandler::GetRow($sql, $params);
+        return $result['is_css'];
+    }
+
+    public static function GetCssSurveyData($surveyId, $languageId = null)
+    {
+        // Get current session's languageId if not specified
+        if (is_null($languageId))
+            $languageId = Language::Get();
+
+        // Build SQL query
+        $sql = 'CALL surveys_get_css_survey_data(:survey_id, :language_id)';
+
+        // Build the parameters array
+        $params = array(':survey_id' => $surveyId, ':language_id' => $languageId);
+
+        // Execute the query and return the results
+        return DatabaseHandler::GetAll($sql, $params);
+    }
 }
 ?>

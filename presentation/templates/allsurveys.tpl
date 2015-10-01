@@ -3,12 +3,12 @@
 
 <section class="row">
     <article class="grid_7">
-        <h4>{if $obj->mActiveLang eq "gr"}Αριθμός ενεργών ερευνών: {else}Number of active surveys:{/if} {$obj->mSurveys|@count}</h4>
+        <h4>{#active_survey_num#}: {$obj->mSurveys|@count}</h4>
         <table>
             <thead>
             <tr>
-                <th scope="col">Έρευνα</th>
-                <th scope="col">Περιγραφή</th>
+                <th scope="col">{#survey#}</th>
+                <th scope="col">{#descr#}</th>
             </tr>
             </thead>
             <tbody>

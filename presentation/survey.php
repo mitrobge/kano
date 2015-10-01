@@ -11,6 +11,7 @@ class Survey
     public $data;
     public $links = array();
     private $surveyId = null;
+    public $isCss;
 
 
 // Class constructor
@@ -28,7 +29,26 @@ class Survey
 
     public function init()
     {
-        $this->data = Surveys::GetSurveyData($this->surveyId, null);
+        $this->isCss = Surveys::GetSurveyIsCss($this->surveyId);
+
+
+        if($this->isCss == 1){
+            $this->data = Surveys::GetCssSurveyData($this->surveyId, null);
+
+        } else{
+            $result = Surveys::GetSurveyData($this->surveyId, null);
+            $css = array();
+            $ccid = null;
+            foreach($result as $item){
+                $answers = array();
+                if($ccid != $item['ccid']) {
+                    $ccid = $item['ccid'];
+                    $answers[$item['answer_id']] = $item['answer'];
+                }
+
+            }
+        }
+
         /*foreach ($this->data as $item) {
             echo "data: ". $item['question'];
         }*/

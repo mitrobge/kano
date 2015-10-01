@@ -26,7 +26,8 @@ class AllSurveys
 
     public function init()
     {
-        $this->mSurveys = Surveys::GetActiveSurveys(null);
+
+        $this->mSurveys = Surveys::GetActiveSurveys(null, isset($_GET['css']));
         foreach ($this->mSurveys as $item) {
             $this->links[$item['survey_id']] = Link::ToSurvey($item['survey_id']);
         }

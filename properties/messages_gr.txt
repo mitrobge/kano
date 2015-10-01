@@ -1,8 +1,12 @@
+kano_surveys=Έρευνες ΚΑΝΟ
+css_surveys=Έρευνες CSS
 gr=Ελληνικά
 en=Αγγλικά
 change=Αλλαγή
 kano_surveys=Έρευνες ΚΑΝΟ
 survey=Έρευνα
+descr=Περιγραφή
+active_survey_num=Αριθμός ενεργών ερευνών
 ans1=Μου αρέσει έτσι
 ans2=Έτσι πρέπει να είναι
 ans3=Είμαι Ουδέτερος

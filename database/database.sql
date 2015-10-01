@@ -31,14 +31,15 @@ CREATE TABLE category_description (
 );
 
 CREATE TABLE survey (
-    survey_id           INT          NOT NULL AUTO_INCREMENT,
-    parent_id           INT,
-    survey_sdate        DATETIME     NOT NULL,
-    survey_edate        DATETIME     NOT NULL,
-    added_on            DATETIME     NOT NULL,
-    is_active           BOOLEAN NOT NULL DEFAULT TRUE,
-    sorting_id          INT          NOT NULL DEFAULT 0,
-    PRIMARY KEY (survey_id)
+  survey_id           INT          NOT NULL AUTO_INCREMENT,
+  parent_id           INT,
+  survey_sdate        DATETIME     NOT NULL,
+  survey_edate        DATETIME     NOT NULL,
+  added_on            DATETIME     NOT NULL,
+  is_active           BOOLEAN NOT  NULL DEFAULT TRUE,
+  sorting_id          INT          NOT NULL DEFAULT 0,
+  is_css              BOOLEAN      NOT NULL DEFAULT FALSE,
+  PRIMARY KEY (survey_id)
 );
 
 CREATE TABLE survey_description (
@@ -80,6 +81,15 @@ CREATE TABLE survey_customers_characteristics_description (
     language_id                     INT             NOT NULL,
     customer_characteristic_name    VARCHAR(32)     NOT NULL,
     PRIMARY KEY (customers_characteristic_id, language_id)
+);
+
+CREATE TABLE survey_customers_characteristics_answers (
+  answer_id                       INT             NOT NULL AUTO_INCREMENT,
+  customers_characteristic_id     INT             NOT NULL,
+  language_id                     INT             NOT NULL,
+  answer    VARCHAR(32)     NOT NULL,
+  PRIMARY KEY (answer_id),
+  UNIQUE KEY idx_cc_lang_answer (customers_characteristic_id, language_id, answer)
 );
 
 CREATE TABLE survey_answers (
@@ -783,13 +793,14 @@ BEGIN
     WHERE file_id = inFileId;
 END$$
 
-CREATE PROCEDURE surveys_get_active_surveys(IN inLanguageId INT)
+CREATE PROCEDURE surveys_get_active_surveys(IN inLanguageId INT, IN isCSS INT)
 BEGIN
     SELECT      s.survey_id, d.name, d.description, s.is_active
     FROM        survey s
     JOIN        survey_description d on d.survey_id = s.survey_id
     WHERE       d.language_id = inLanguageId and s.is_active = 1
-    AND now() between survey_sdate and s.survey_edate
+    AND now() between s.survey_sdate and s.survey_edate
+    AND s.is_css = isCSS
     ORDER BY    s.sorting_id, s.survey_id;
 END$$
 
@@ -936,6 +947,25 @@ BEGIN
     SELECT  LAST_INSERT_ID() INTO questionId;
 
     SELECT  questionId; 
+END$$
+
+CREATE PROCEDURE surveys_get_survey_iscss(IN inSurveyId INT)
+  BEGIN
+    SELECT 	is_css
+    FROM	survey
+    WHERE	survey_id = inSurveyId;
+END$$
+
+CREATE PROCEDURE surveys_get_css_survey_data(IN surveyId INT, IN inLanguageId INT)
+  BEGIN
+    SELECT s.survey_id id, d.name, d.description, scc.customers_characteristic_id ccid, sccd.customer_characteristic_name, scca.answer_id, scca.answer
+    FROM survey s join kano.survey_description d on d.survey_id = s.survey_id
+      join kano.survey_customers_characteristics scc on scc.survey_id = s.survey_id
+      join kano.survey_customers_characteristics_description sccd on sccd.customers_characteristic_id = scc.customers_characteristic_id
+      join survey_customers_characteristics_answers scca on scca.customers_characteristic_id = scc.customers_characteristic_id and scca.language_id = d.language_id
+                                                            and sccd.language_id = d.language_id
+                                                            and d.language_id = inLanguageId and s.survey_id = surveyId
+    order by ccid;
 END$$
 
 -- Change back DELIMITER to ;
