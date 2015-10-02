@@ -30,38 +30,74 @@ class SubmitSurvey
         $sid = $_POST['sid'];
 
 
-        $existingAnswers = Surveys::GetCustomerSurveyAnswers($sid, $email);
+        if(isset($_POST['is_css']) && $_POST['is_css'] == 1) {
 
-        if(count($existingAnswers)>0){
-            $this->result = -1;
-            return;
-        }
+            $existingAnswers = Surveys::GetCustomerCssSurveyAnswers($sid, $email);
 
-        $surveyData = Surveys::GetSurveyData($sid, null);
-        $queries = array();
-
-        foreach($surveyData as $value){
-            //echo "qid:". $value['qid'];
-            if (!in_array($value['qid'], $queries)) {
-                $queries[] = $value['qid'];
-            }
-        }
-
-        //print_r($queries);
-
-        foreach($queries as $value) {
-            $positiveAnswer = $_POST["q" . $value . $this->is_positive];
-            $negativeAnswer = $_POST["q" . $value . $this->is_negative];
-            if (!isset($positiveAnswer) || !isset($negativeAnswer)) {
+            if(count($existingAnswers)>0){
+                $this->result = -1;
                 return;
             }
 
-            //echo $email.",".$sid.",".$value.",".$positiveAnswer.",".$negativeAnswer;
-            $this->result = Surveys::SubmitSurveyAnswer($email, $sid, $value, $positiveAnswer, $negativeAnswer);
-            if($this->result != 1){
-                break;
+            $surveyData = Surveys::GetCssSurveyData($sid, null);
+            $queries = array();
+
+            foreach ($surveyData as $value) {
+                //echo "qid:". $value['qid'];
+                if (!in_array($value['ccid'], $queries)) {
+                    $queries[] = $value['ccid'];
+                }
             }
 
+            //print_r($queries);
+
+            foreach ($queries as $value) {
+                $answerId = $_POST["q" . $value];
+                if (!isset($answerId)) {
+                    return;
+                }
+
+                $this->result = Surveys::SubmitCssSurveyAnswer($email, $sid, $value, $answerId);
+                if ($this->result != 1) {
+                    break;
+                }
+
+            }
+        } else {
+
+            $existingAnswers = Surveys::GetCustomerSurveyAnswers($sid, $email);
+
+            if(count($existingAnswers)>0){
+                $this->result = -1;
+                return;
+            }
+
+            $surveyData = Surveys::GetSurveyData($sid, null);
+            $queries = array();
+
+            foreach ($surveyData as $value) {
+                //echo "qid:". $value['qid'];
+                if (!in_array($value['qid'], $queries)) {
+                    $queries[] = $value['qid'];
+                }
+            }
+
+            //print_r($queries);
+
+            foreach ($queries as $value) {
+                $positiveAnswer = $_POST["q" . $value . $this->is_positive];
+                $negativeAnswer = $_POST["q" . $value . $this->is_negative];
+                if (!isset($positiveAnswer) || !isset($negativeAnswer)) {
+                    return;
+                }
+
+                //echo $email.",".$sid.",".$value.",".$positiveAnswer.",".$negativeAnswer;
+                $this->result = Surveys::SubmitSurveyAnswer($email, $sid, $value, $positiveAnswer, $negativeAnswer);
+                if ($this->result != 1) {
+                    break;
+                }
+
+            }
         }
 
     }

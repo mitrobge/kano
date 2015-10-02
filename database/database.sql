@@ -172,6 +172,19 @@ CREATE TABLE survey_owner (
   UNIQUE KEY idx_customer_email (email)
 );
 
+CREATE TABLE css_survey_answers
+(
+  answer_id INT NOT NULL AUTO_INCREMENT,
+  survey_customers_characteristics_answer_id INT NOT NULL,
+  survey_id INT NOT NULL,
+  characteristic_id INT NOT NULL,
+  added_on DATETIME NOT NULL,
+  customer_id INT NOT NULL,
+  PRIMARY KEY (answer_id),
+  CONSTRAINT idx_customer_characteristic_id UNIQUE (customer_id, characteristic_id)
+)
+  ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 -- Change DELIMITER to $$
 DELIMITER $$
 
@@ -958,15 +971,66 @@ END$$
 
 CREATE PROCEDURE surveys_get_css_survey_data(IN surveyId INT, IN inLanguageId INT)
   BEGIN
-    SELECT s.survey_id id, d.name, d.description, scc.customers_characteristic_id ccid, sccd.customer_characteristic_name, scca.answer_id, scca.answer
+    SELECT s.survey_id id, d.name, d.description, scc.customers_characteristic_id ccid, sccd.customer_characteristic_name
     FROM survey s join kano.survey_description d on d.survey_id = s.survey_id
       join kano.survey_customers_characteristics scc on scc.survey_id = s.survey_id
       join kano.survey_customers_characteristics_description sccd on sccd.customers_characteristic_id = scc.customers_characteristic_id
-      join survey_customers_characteristics_answers scca on scca.customers_characteristic_id = scc.customers_characteristic_id and scca.language_id = d.language_id
-                                                            and sccd.language_id = d.language_id
-                                                            and d.language_id = inLanguageId and s.survey_id = surveyId
+                                                                     and sccd.language_id = d.language_id
+                                                                     and d.language_id = inLanguageId and s.survey_id = surveyId
     order by ccid;
-END$$
+  END$$
 
+CREATE PROCEDURE surveys_get_css_survey_answers(IN customersCharacteristicId INT, IN inLanguageId INT)
+  BEGIN
+    select scca.answer_id, scca.answer from kano.survey_customers_characteristics scc
+      join survey_customers_characteristics_answers scca on scca.customers_characteristic_id = scc.customers_characteristic_id
+    where scc.customers_characteristic_id = customersCharacteristicId and scca.language_id = inLanguageId
+    order by scca.answer;
+  END$$
+
+CREATE PROCEDURE css_survey_submit_answer(IN customerEmail VARCHAR(50),
+                                          IN surveyId INT,
+                                          IN characteristicId INT,
+                                          IN sccaAnswerId INT,
+                                          OUT result INT)
+  BEGIN
+
+    DECLARE cId int;
+
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+    ROLLBACK;
+/*GET DIAGNOSTICS CONDITION 1
+@p1 = RETURNED_SQLSTATE, @p2 = MESSAGE_TEXT;
+SELECT 'An error has occurred, operation rollbacked and the stored procedure was terminated';*/
+    END;
+
+    START TRANSACTION;
+
+    set result = 0;
+
+    select customer_id INTO cId from customer where email =  customerEmail;
+
+    if(cId is null)
+    then
+      INSERT INTO customer (email) VALUES (customerEmail);
+      SELECT LAST_INSERT_ID() INTO cId;
+    end if;
+
+    INSERT
+    INTO  css_survey_answers (survey_customers_characteristics_answer_id,
+                              survey_id, characteristic_id, added_on, customer_id)
+    VALUES (sccaAnswerId, surveyId, characteristicId, now(), cId);
+    COMMIT;
+    set result = 1;
+  END$$
+
+CREATE PROCEDURE surveys_get_customer_css_survey_answers(IN surveyId INT, IN customerEmail VARCHAR(50))
+  BEGIN
+    select sa.answer_id, sa.survey_id, sa.characteristic_id,
+      sa.survey_customers_characteristics_answer_id, sa.added_on, sa.customer_id
+    from css_survey_answers sa join customer c on sa.customer_id = c.customer_id
+    where sa.survey_id = surveyId and c.email = customerEmail;
+  END$$
 -- Change back DELIMITER to ;
 DELIMITER ;

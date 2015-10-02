@@ -1292,6 +1292,20 @@ class Surveys
         return $result;
     }
 
+    public static function SubmitCssSurveyAnswer($customerEmail, $surveyId,
+                                              $characteristicId, $sccaAnswerId)
+    {
+        // Build SQL query
+        $sql = 'CALL css_survey_submit_answer(:email, :survey_id, :qid, :scca_id, @res)';
+
+        // Build the parameters array
+        $params = array(':email' => $customerEmail, ':survey_id' => $surveyId,
+            ':qid' => $characteristicId, ':scca_id' => $sccaAnswerId);
+
+        $result = DatabaseHandler::ExecuteSingleOutput($sql, $params);
+        return $result;
+    }
+
     public static function GetOwnerData()
     {
         // Build SQL query
@@ -1322,6 +1336,35 @@ class Surveys
 
         // Build the parameters array
         $params = array(':survey_id' => $surveyId, ':language_id' => $languageId);
+
+        // Execute the query and return the results
+        return DatabaseHandler::GetAll($sql, $params);
+    }
+
+    public static function GetCssSurveyAnswers($customersCharacteristicId, $languageId = null)
+    {
+        // Get current session's languageId if not specified
+        if (is_null($languageId))
+            $languageId = Language::Get();
+
+        // Build SQL query
+        $sql = 'CALL surveys_get_css_survey_answers(:customers_characteristic_id, :language_id)';
+
+        // Build the parameters array
+        $params = array(':customers_characteristic_id' => $customersCharacteristicId, ':language_id' => $languageId);
+
+        // Execute the query and return the results
+        return DatabaseHandler::GetAll($sql, $params);
+    }
+
+    public static function GetCustomerCssSurveyAnswers($surveyId, $customerEmail)
+    {
+
+        // Build SQL query
+        $sql = 'CALL surveys_get_customer_css_survey_answers(:survey_id, :email)';
+
+        // Build the parameters array
+        $params = array(':survey_id' => $surveyId, ':email' => $customerEmail);
 
         // Execute the query and return the results
         return DatabaseHandler::GetAll($sql, $params);
