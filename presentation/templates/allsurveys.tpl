@@ -2,8 +2,8 @@
 {load_presentation_object filename="allsurveys" assign="obj"}
 
 <section class="row">
-    <article class="grid_7">
-        <h4>{#active_survey_num#}: {$obj->mSurveys|@count}</h4>
+    <article class="grid_8">
+        <p>{#active_survey_num#}: {$obj->mSurveys|@count}</p>
         <table>
             <thead>
             <tr>

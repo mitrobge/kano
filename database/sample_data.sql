@@ -64,27 +64,27 @@ INSERT INTO survey_questions_characteristics (question_characteristic_id, survey
         (7, 3);
 
 
-INSERT INTO survey_questions_characteristics_description (question_characteristic_id, language_id, question, is_positive) VALUES
-  (1,1,'Πως σας φαίνεται να έχει το ξενοδοχείο χαρτι τουαλέτας;',1),
-  (1,1,'Πως σας φαίνεται να μην έχει το ξενοδοχείο χαρτι τουαλέτας;', 0),
-  (1,2,'How do you feel if the hotel has toilet paper?',1),
-  (1,2,'How do you feel if the hotel has no toilet paper?', 0),
-  (2,1,'Πως σας φαίνεται να έχει το ξενοδοχείο καθαρές πετσέτες;',1),
-  (2,1,'Πως σας φαίνεται να μην έχει το ξενοδοχείο καθαρές πετσέτες;', 0),
-  (2,2,'How do you feel if the hotel has clean towels?',1),
-  (2,2,'How do you feel if the hotel has no clean towels?', 0),
-  (3,1,'Πως σας φαίνεται να έχει το ξενοδοχείο πίσινα;',1),
-  (3,1,'Πως σας φαίνεται να μην έχει το ξενοδοχείο πίσινα;', 0),
-  (3,2,'How do you feel if the hotel has water pool?',1),
-  (3,2,'How do you feel if the hotel has no water pool?', 0),
-  (4,1,'Πως σας φαίνεται το ξενοδοχείο να παρέχει βραδυνό;',1),
-  (4,1,'Πως σας φαίνεται το ξενοδοχείο να μην παρέχει βραδυνό;', 0),
-  (4,2,'How do you feel if the hotel provides dinner?',1),
-  (4,2,'How do you feel if the hotel does not provide dinner?', 0),
-  (5,1,'Πως σας φαίνεται το ξενοδοχείο να δέχεται πιστωτική/χρεωστική κάρτα;',1),
-  (5,1,'Πως σας φαίνεται το ξενοδοχείο να μην δέχεται πιστωτική/χρεωστική κάρτα;', 0),
-  (5,2,'How do you feel if the hotel accepts credit card?',1),
-  (5,2,'How do you feel if the hotel does not accept credit card?', 0);
+INSERT INTO survey_questions_characteristics_description (question_characteristic_id, language_id, question, attribute, is_positive) VALUES
+  (1,1,'Πως σας φαίνεται να έχει το ξενοδοχείο χαρτι τουαλέτας;', 'Χαρτί τουαλέτας' ,1),
+  (1,1,'Πως σας φαίνεται να μην έχει το ξενοδοχείο χαρτι τουαλέτας;','Χαρτί τουαλέτας', 0),
+  (1,2,'How do you feel if the hotel has toilet paper?','toilet paper', 1),
+  (1,2,'How do you feel if the hotel has no toilet paper?', 'toilet paper', 0),
+  (2,1,'Πως σας φαίνεται να έχει το ξενοδοχείο καθαρές πετσέτες;', 'καθαρές πετσέτες', 1),
+  (2,1,'Πως σας φαίνεται να μην έχει το ξενοδοχείο καθαρές πετσέτες;', 'καθαρές πετσέτες', 0),
+  (2,2,'How do you feel if the hotel has clean towels?', 'clean towels', 1),
+  (2,2,'How do you feel if the hotel has no clean towels?', 'clean towels', 0),
+  (3,1,'Πως σας φαίνεται να έχει το ξενοδοχείο πίσινα;', 'πισίνα', 1),
+  (3,1,'Πως σας φαίνεται να μην έχει το ξενοδοχείο πίσινα;', 'πισίνα', 0),
+  (3,2,'How do you feel if the hotel has water pool?', 'water pool', 1),
+  (3,2,'How do you feel if the hotel has no water pool?', 'water pool', 0),
+  (4,1,'Πως σας φαίνεται το ξενοδοχείο να παρέχει βραδυνό;', 'βραδυνό', 1),
+  (4,1,'Πως σας φαίνεται το ξενοδοχείο να μην παρέχει βραδυνό;', 'βραδυνό', 0),
+  (4,2,'How do you feel if the hotel provides dinner?', 'dinner', 1),
+  (4,2,'How do you feel if the hotel does not provide dinner?', 'dinner', 0),
+  (5,1,'Πως σας φαίνεται το ξενοδοχείο να δέχεται πιστωτική/χρεωστική κάρτα;', 'πιστωτική/χρεωστική κάρτα', 1),
+  (5,1,'Πως σας φαίνεται το ξενοδοχείο να μην δέχεται πιστωτική/χρεωστική κάρτα;', 'πιστωτική/χρεωστική κάρτα', 0),
+  (5,2,'How do you feel if the hotel accepts credit card?', 'credit card', 1),
+  (5,2,'How do you feel if the hotel does not accept credit card?', 'credit card', 0);
 
 
 INSERT INTO country VALUES 

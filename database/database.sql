@@ -65,6 +65,7 @@ CREATE TABLE survey_questions_characteristics (
 CREATE TABLE survey_questions_characteristics_description (
     question_characteristic_id      INT             NOT NULL,
     language_id                     INT             NOT NULL,
+    attribute                       VARCHAR(200)    NOT NULL,
     question                        VARCHAR(200)    NOT NULL,
     is_positive                     BOOLEAN         NOT NULL DEFAULT TRUE,
     PRIMARY KEY (question_characteristic_id, language_id, is_positive)
@@ -174,12 +175,12 @@ CREATE TABLE survey_owner (
 
 CREATE TABLE css_survey_answers
 (
-  answer_id INT NOT NULL AUTO_INCREMENT,
-  survey_customers_characteristics_answer_id INT NOT NULL,
-  survey_id INT NOT NULL,
-  characteristic_id INT NOT NULL,
-  added_on DATETIME NOT NULL,
-  customer_id INT NOT NULL,
+  answer_id INT                                     NOT NULL AUTO_INCREMENT,
+  survey_customers_characteristics_answer_id INT    NOT NULL,
+  survey_id INT                                     NOT NULL,
+  characteristic_id INT                             NOT NULL,
+  added_on DATETIME                                 NOT NULL,
+  customer_id INT                                   NOT NULL,
   PRIMARY KEY (answer_id),
   CONSTRAINT idx_customer_characteristic_id UNIQUE (customer_id, characteristic_id)
 )
@@ -632,7 +633,7 @@ END$$
 
 CREATE PROCEDURE surveys_get_survey_name(IN inSurveyId INT, IN inLanguageId INT)
 BEGIN
-    SELECT 	name
+    SELECT 	name, attribute
     FROM	survey_description
     WHERE	survey_id = inSurveyId
     AND language_id = inLanguageId;
@@ -644,6 +645,13 @@ BEGIN
     FROM	survey_description
     WHERE	survey_id = inSurveyId
     AND language_id = inLanguageId;
+END$$
+
+CREATE PROCEDURE surveys_get_survey_isactive(IN inSurveyId INT)
+BEGIN
+    SELECT 	is_active
+    FROM	survey
+    WHERE	survey_id = inSurveyId;
 END$$
 
 CREATE PROCEDURE surveys_get_survey_details(IN inSurveyId INT, IN inLanguageId INT)
@@ -830,7 +838,7 @@ END$$
 
 CREATE PROCEDURE surveys_get_survey_questions(IN surveyId INT, IN inLanguageId INT)
 BEGIN
-    SELECT language_id, question_characteristic_id qid, question, is_positive  
+    SELECT language_id, question_characteristic_id qid, question, is_positive, attribute
     FROM  survey_questions_characteristics_description 
     WHERE language_id = inLanguageId
     ORDER BY qid;
@@ -912,10 +920,12 @@ BEGIN
     IF surveyId IS NOT NULL THEN
         UPDATE  survey_description
         SET     name = inSurveyName,
-        description = inSurveyDescription,
-        is_active = inIsActive
+        description = inSurveyDescription
         WHERE   survey_id = inSurveyId
         AND language_id = inLanguageId; 
+        UPDATE survey
+        SET is_active = inIsActive
+        WHERE   survey_id = inSurveyId;
     ELSE
         INSERT
         INTO    survey_description (survey_id, language_id, name, description)
@@ -924,12 +934,11 @@ BEGIN
 END$$
 
 CREATE PROCEDURE surveys_update_survey_question(IN inQuestionId INT,
-                                         IN inQuestion VARCHAR(200),
-                                         IN inIsPositive BOOLEAN,
+                                         IN inQuestionPos VARCHAR(200),
+                                         IN inQuestionNeg VARCHAR(200),
                                          IN inLanguageId INT)
 BEGIN
-	DECLARE questionId INT;
-
+    DECLARE questionId INT;
     SELECT  question_characteristic_id          
     FROM survey_questions_characteristics_description 
     WHERE   question_characteristic_id = inQuestionId
@@ -939,12 +948,21 @@ BEGIN
     IF questionId IS NULL THEN
         INSERT
         INTO    survey_questions_characteristics_description (question_characteristic_id, language_id, question, is_positive)
-        VALUES  (inQuestionId, inLanguageId, inQuestion, inIsPositive);
+        VALUES  (inQuestionId, inLanguageId, inQuestionPos, TRUE);
+        INSERT
+        INTO    survey_questions_characteristics_description (question_characteristic_id, language_id, question, is_positive)
+        VALUES  (inQuestionId, inLanguageId, inQuestionNeg, FALSE);
     ELSE
         UPDATE  survey_questions_characteristics_description
-        SET     question = inQuestion
+        SET     question = inQuestionPos
         WHERE   question_characteristic_id = inQuestionId
-                AND language_id = inLanguageId;
+                AND language_id = inLanguageId
+                AND is_positive = TRUE;
+        UPDATE  survey_questions_characteristics_description
+        SET     question = inQuestionNeg
+        WHERE   question_characteristic_id = inQuestionId
+                AND language_id = inLanguageId
+                AND is_positive = FALSE;
     END IF;
 END$$
 

@@ -19,14 +19,14 @@ $(document).ready(function(){
 
 <div id="box">
     <h3>
-    Υπηρεσίες του τμήματος "{$obj->mCategoryName}"
+    Έρευνες της κατηγορίας "{$obj->mCategoryName}"
     </h3>
     <br>
     <a href="{$obj->mLinkToCategories}">Πίσω</a>
     <br>
     <br>
     <h3>
-    <a href="{$obj->mLinkToAddProduct}">Προσθήκη νέας υπηρεσίας</a>
+    <a href="{$obj->mLinkToAddProduct}">Προσθήκη νέας Έρευνας</a>
     </h3>
     <br>
     <br>
@@ -57,16 +57,12 @@ $(document).ready(function(){
             </thead>
             <tbody>
                 {section name=i loop=$obj->mProducts}
-                <tr id="{$obj->mProducts[i].survey_id} 1">
+                <tr>
                     <td>{$obj->mProducts[i].name}</td>
-                    {*
-                    <td>{if $obj->mProducts[i].unique_category_id eq 1}Άρθρο{elseif $obj->mProducts[i].unique_category_id eq 2}Βιβλίο{else}Σεμινάριο{/if}</td>
-                    <td>{$obj->mProducts[i].name}</td>
-                    <td>{$obj->mProducts[i].manufacturer_name}</td>
-                    <td>{$obj->mProducts[i].price}</td>
-                    <td>{$obj->mProducts[i].discount_price}</td>
-                    *}
-                    <td><a href="{$obj->ProductDetailsLink($obj->mProducts[i].survey_id,1,null)}">Λεπτομέρειες</a></td>
+                    <td>      
+                    <a href="{$obj->ProductQuestionsLink($obj->mProducts[i].survey_id,1,null)}"><font size="2"><b>Ερωτήσεις KANO</b></font></a></br>
+                    <a href="{$obj->ProductDetailsLink($obj->mProducts[i].survey_id,1,null)}"><font size="2"><b>Στοιχεία Έρευνας</b></font></a>
+                    </td>
                 </tr>
                 {/section}
             </tbody>

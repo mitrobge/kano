@@ -24,6 +24,12 @@ class AdminSurveys
         return Link::ToProductDetailsAdmin($productId, 
                     $this->__mStoreId, $this->__mCategoryId);
     }
+    
+    public function ProductQuestionsLink($productId)
+    {
+        return Link::ToSurveyQuestionsAdmin($productId, 
+                    $this->__mStoreId, $this->__mCategoryId);
+    }
 
     public function __construct()
     {

@@ -60,17 +60,6 @@ class AdminProductAdd
             exit(0);
         }
          
-        if (isset($_GET['StoreId'])) {
-            $this->__mStoreId = $_GET['StoreId'];
-        } else {
-            $stores = Stores::Get();
-            if (count($stores) > 1) {
-                trigger_error('Adding a product in a multistore catalog needs StoreId to be set');
-                exit(0);
-            }
-            $this->__mStoreId = $stores[0]['store_id'];
-        } 
-        
         if (isset($_GET['CategoryId'])) {
             $this->__mCategoryId = $_GET['CategoryId'];
             $category = Catalog::GetCategory($this->__mCategoryId);
@@ -78,7 +67,6 @@ class AdminProductAdd
                 trigger_error('Cannot add a product to a non-leaf category');
                 exit(0);
             }
-            $this->mCategoryIsGroup = $category['is_group'];
         } 
         
         /* Promotion Start date is now */
@@ -197,8 +185,6 @@ class AdminProductAdd
         if ($this->mCategoryIsGroup || isset($_GET['StoreId']))
             $this->mCategories = Catalog::GetCategoriesTree(); 
         
-        /* Get Manufacturers */
-        $this->mManufacturers = Manufacturer::GetAll();
         
         /* Initialize name/description arrays only if nothing has been posted */
         if (!isset($_POST['submit_add_product'])) {

@@ -4706,3 +4706,808 @@ Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs
 Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
 
 
+
+ERRNO: 512
+TEXT: Smarty error: unable to read resource: "../../properties/messages_gr.txt"
+LOCATION: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php, line 1092, at October 2, 2015, 9:35 pm
+Showing backtrace:
+trigger_error("Smarty error: unable to read resource: &quot;../../properties/message...", "512") # line 1092, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.trigger_error("unable to read resource: &quot;../../properties/messages_gr.txt&quot;") # line 1588, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._fetch_resource_info(Array[5]) # line   94, file: /opt/lampp/htdocs/kano/libs/smarty/plugins/function.config_load.php
+smarty_function_config_load(Array[1], Object: Application) # line    7, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 256
+TEXT: SQLSTATE[42000]: Syntax error or access violation: 1318 Incorrect number of arguments for PROCEDURE kano.surveys_get_active_surveys; expected 1, got 2
+LOCATION: /opt/lampp/htdocs/kano/business/database_handler.php, line 101, at October 2, 2015, 9:36 pm
+Showing backtrace:
+trigger_error("SQLSTATE[42000]: Syntax error or access violation: 1318 Incorrec...", "256") # line  101, file: /opt/lampp/htdocs/kano/business/database_handler.php
+DatabaseHandler.GetAll("CALL surveys_get_active_surveys(:language_id, :is_css)", Array[2]) # line 1249, file: /opt/lampp/htdocs/kano/business/surveys.php
+Surveys.GetActiveSurveys(null, false) # line   30, file: /opt/lampp/htdocs/kano/presentation/allsurveys.php
+AllSurveys.init() # line   15, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%89^894^894DB58E%%allsurveys.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%89^894^894DB58...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line  127, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 8
+TEXT: Undefined index: products_count
+LOCATION: /opt/lampp/htdocs/kano/presentation/admin_categories.php, line 130, at October 3, 2015, 10:03 am
+Showing backtrace:
+AdminCategories.init() # line   15, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%F9^F97^F97AE06E%%admin_categories.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%F9^F97^F97AE06...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined index: subcategories_count
+LOCATION: /opt/lampp/htdocs/kano/presentation/admin_product_add.php, line 66, at October 3, 2015, 10:05 am
+Showing backtrace:
+AdminProductAdd.__construct() # line   12, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFBD%%admin_product_add.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFB...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined index: is_group
+LOCATION: /opt/lampp/htdocs/kano/presentation/admin_product_add.php, line 70, at October 3, 2015, 10:05 am
+Showing backtrace:
+AdminProductAdd.__construct() # line   12, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFBD%%admin_product_add.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFB...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined index: subcategories_count
+LOCATION: /opt/lampp/htdocs/kano/presentation/admin_product_add.php, line 66, at October 3, 2015, 10:05 am
+Showing backtrace:
+AdminProductAdd.__construct() # line   12, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFBD%%admin_product_add.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFB...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined index: is_group
+LOCATION: /opt/lampp/htdocs/kano/presentation/admin_product_add.php, line 70, at October 3, 2015, 10:05 am
+Showing backtrace:
+AdminProductAdd.__construct() # line   12, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFBD%%admin_product_add.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFB...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined property: AdminProductAdd::$mManufacturers
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFBD%%admin_product_add.tpl.php, line 162, at October 3, 2015, 10:05 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFB...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined index: subcategories_count
+LOCATION: /opt/lampp/htdocs/kano/presentation/admin_product_add.php, line 66, at October 3, 2015, 10:05 am
+Showing backtrace:
+AdminProductAdd.__construct() # line   12, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFBD%%admin_product_add.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFB...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined property: AdminProductAdd::$mManufacturers
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFBD%%admin_product_add.tpl.php, line 162, at October 3, 2015, 10:05 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFB...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined index: subcategories_count
+LOCATION: /opt/lampp/htdocs/kano/presentation/admin_product_add.php, line 66, at October 3, 2015, 10:06 am
+Showing backtrace:
+AdminProductAdd.__construct() # line   12, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFBD%%admin_product_add.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFB...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined property: AdminProductAdd::$mManufacturers
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFBD%%admin_product_add.tpl.php, line 162, at October 3, 2015, 10:06 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFB...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined index: subcategories_count
+LOCATION: /opt/lampp/htdocs/kano/presentation/admin_product_add.php, line 66, at October 3, 2015, 10:07 am
+Showing backtrace:
+AdminProductAdd.__construct() # line   12, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFBD%%admin_product_add.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFB...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined property: AdminProductAdd::$mManufacturers
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFBD%%admin_product_add.tpl.php, line 157, at October 3, 2015, 10:07 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFB...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined index: subcategories_count
+LOCATION: /opt/lampp/htdocs/kano/presentation/admin_product_add.php, line 66, at October 3, 2015, 10:07 am
+Showing backtrace:
+AdminProductAdd.__construct() # line   12, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFBD%%admin_product_add.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFB...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined index: subcategories_count
+LOCATION: /opt/lampp/htdocs/kano/presentation/admin_product_add.php, line 66, at October 3, 2015, 10:07 am
+Showing backtrace:
+AdminProductAdd.__construct() # line   12, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFBD%%admin_product_add.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFB...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined index: subcategories_count
+LOCATION: /opt/lampp/htdocs/kano/presentation/admin_product_add.php, line 66, at October 3, 2015, 10:08 am
+Showing backtrace:
+AdminProductAdd.__construct() # line   12, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFBD%%admin_product_add.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%DA^DA5^DA5DBFB...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 256
+TEXT: SQLSTATE[42000]: Syntax error or access violation: 1305 PROCEDURE kano.surveys_get_survey_isactive does not exist
+LOCATION: /opt/lampp/htdocs/kano/business/database_handler.php, line 208, at October 3, 2015, 10:16 am
+Showing backtrace:
+trigger_error("SQLSTATE[42000]: Syntax error or access violation: 1305 PROCEDUR...", "256") # line  208, file: /opt/lampp/htdocs/kano/business/database_handler.php
+DatabaseHandler.GetOne("CALL surveys_get_survey_isactive(:survey_id, :language_id)", Array[2]) # line  857, file: /opt/lampp/htdocs/kano/business/surveys.php
+Surveys.GetSurveyIsActive("1", "1") # line  379, file: /opt/lampp/htdocs/kano/presentation/admin_survey_details.php
+AdminSurveyDetails.init() # line   15, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%CA^CA4^CA43CEBA%%admin_survey_details.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%CA^CA4^CA43CEB...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 256
+TEXT: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'is_active' in 'field list'
+LOCATION: /opt/lampp/htdocs/kano/business/database_handler.php, line 208, at October 3, 2015, 10:17 am
+Showing backtrace:
+trigger_error("SQLSTATE[42S22]: Column not found: 1054 Unknown column 'is_activ...", "256") # line  208, file: /opt/lampp/htdocs/kano/business/database_handler.php
+DatabaseHandler.GetOne("CALL surveys_get_survey_isactive(:survey_id, :language_id)", Array[2]) # line  857, file: /opt/lampp/htdocs/kano/business/surveys.php
+Surveys.GetSurveyIsActive("1", "1") # line  379, file: /opt/lampp/htdocs/kano/presentation/admin_survey_details.php
+AdminSurveyDetails.init() # line   15, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%CA^CA4^CA43CEBA%%admin_survey_details.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%CA^CA4^CA43CEB...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 256
+TEXT: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'language_id' in 'where clause'
+LOCATION: /opt/lampp/htdocs/kano/business/database_handler.php, line 208, at October 3, 2015, 10:18 am
+Showing backtrace:
+trigger_error("SQLSTATE[42S22]: Column not found: 1054 Unknown column 'language...", "256") # line  208, file: /opt/lampp/htdocs/kano/business/database_handler.php
+DatabaseHandler.GetOne("CALL surveys_get_survey_isactive(:survey_id, :language_id)", Array[2]) # line  857, file: /opt/lampp/htdocs/kano/business/surveys.php
+Surveys.GetSurveyIsActive("1", "1") # line  379, file: /opt/lampp/htdocs/kano/presentation/admin_survey_details.php
+AdminSurveyDetails.init() # line   15, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%CA^CA4^CA43CEBA%%admin_survey_details.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%CA^CA4^CA43CEB...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 256
+TEXT: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'is_active' in 'field list'
+LOCATION: /opt/lampp/htdocs/kano/business/database_handler.php, line 70, at October 3, 2015, 10:19 am
+Showing backtrace:
+trigger_error("SQLSTATE[42S22]: Column not found: 1054 Unknown column 'is_activ...", "256") # line   70, file: /opt/lampp/htdocs/kano/business/database_handler.php
+DatabaseHandler.Execute("CALL surveys_set_survey_name(:survey_id, :survey_name, 
+        ...", Array[5]) # line  605, file: /opt/lampp/htdocs/kano/business/surveys.php
+Surveys.SetSurveyName("1", "Kano Model Έρευνα 2015a", "&lt;p&gt;Περιγραφή για έρευνα ΚΑΝΟ 2015a2sdf&lt;/p&gt;...", "1", "1") # line  256, file: /opt/lampp/htdocs/kano/presentation/admin_survey_details.php
+AdminSurveyDetails.init() # line   15, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%CA^CA4^CA43CEBA%%admin_survey_details.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%CA^CA4^CA43CEB...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined index: created_on
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%BC^BCA^BCAA3D2B%%admin_administrator_details.tpl.php, line 51, at October 3, 2015, 10:23 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%BC^BCA^BCAA3D2...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined index: last_login
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%BC^BCA^BCAA3D2B%%admin_administrator_details.tpl.php, line 55, at October 3, 2015, 10:23 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%BC^BCA^BCAA3D2...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined index: first_name
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%BC^BCA^BCAA3D2B%%admin_administrator_details.tpl.php, line 59, at October 3, 2015, 10:23 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%BC^BCA^BCAA3D2...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined index: last_name
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%BC^BCA^BCAA3D2B%%admin_administrator_details.tpl.php, line 63, at October 3, 2015, 10:23 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%BC^BCA^BCAA3D2...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined index: email
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%BC^BCA^BCAA3D2B%%admin_administrator_details.tpl.php, line 67, at October 3, 2015, 10:23 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%BC^BCA^BCAA3D2...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined index: status
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%BC^BCA^BCAA3D2B%%admin_administrator_details.tpl.php, line 117, at October 3, 2015, 10:23 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%BC^BCA^BCAA3D2...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined index: permissions_ids
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%BC^BCA^BCAA3D2B%%admin_administrator_details.tpl.php, line 119, at October 3, 2015, 10:23 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%BC^BCA^BCAA3D2...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined index: created_on
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%BC^BCA^BCAA3D2B%%admin_administrator_details.tpl.php, line 129, at October 3, 2015, 10:23 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%BC^BCA^BCAA3D2...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined index: last_login
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%BC^BCA^BCAA3D2B%%admin_administrator_details.tpl.php, line 131, at October 3, 2015, 10:23 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%BC^BCA^BCAA3D2...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined index: administrator_id
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%BC^BCA^BCAA3D2B%%admin_administrator_details.tpl.php, line 138, at October 3, 2015, 10:23 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%BC^BCA^BCAA3D2...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined offset: 0
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php, line 135, at October 3, 2015, 10:24 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 8
+TEXT: Undefined offset: 0
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php, line 136, at October 3, 2015, 10:24 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 8
+TEXT: Undefined offset: 0
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php, line 138, at October 3, 2015, 10:24 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 8
+TEXT: Undefined offset: 0
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php, line 135, at October 3, 2015, 10:24 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 8
+TEXT: Undefined offset: 0
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php, line 136, at October 3, 2015, 10:24 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 8
+TEXT: Undefined offset: 0
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php, line 138, at October 3, 2015, 10:24 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 8
+TEXT: Undefined offset: 0
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php, line 135, at October 3, 2015, 10:24 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 8
+TEXT: Undefined offset: 0
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php, line 136, at October 3, 2015, 10:24 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 8
+TEXT: Undefined offset: 0
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php, line 138, at October 3, 2015, 10:24 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 8
+TEXT: Undefined offset: 0
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php, line 135, at October 3, 2015, 10:24 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 8
+TEXT: Undefined offset: 0
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php, line 136, at October 3, 2015, 10:24 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 8
+TEXT: Undefined offset: 0
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php, line 138, at October 3, 2015, 10:24 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 8
+TEXT: Undefined offset: 0
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php, line 135, at October 3, 2015, 10:24 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 8
+TEXT: Undefined offset: 0
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php, line 136, at October 3, 2015, 10:24 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 8
+TEXT: Undefined offset: 0
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php, line 138, at October 3, 2015, 10:24 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 8
+TEXT: Undefined offset: 0
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php, line 135, at October 3, 2015, 10:24 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 8
+TEXT: Undefined offset: 0
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php, line 136, at October 3, 2015, 10:24 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 8
+TEXT: Undefined offset: 0
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php, line 138, at October 3, 2015, 10:24 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 8
+TEXT: Undefined offset: 0
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php, line 135, at October 3, 2015, 10:24 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 8
+TEXT: Undefined offset: 0
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php, line 136, at October 3, 2015, 10:24 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 8
+TEXT: Undefined offset: 0
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php, line 138, at October 3, 2015, 10:24 am
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 512
+TEXT: Smarty error: unable to read resource: "main_categories.tpl"
+LOCATION: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php, line 1092, at October 3, 2015, 10:52 am
+Showing backtrace:
+trigger_error("Smarty error: unable to read resource: &quot;main_categories.tpl&quot;", "512") # line 1092, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.trigger_error("unable to read resource: &quot;main_categories.tpl&quot;") # line 1588, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._fetch_resource_info(Array[3]) # line 1386, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._is_compiled("main_categories.tpl", "/opt/lampp/htdocs/kano/presentation/templates_c/%%A4^A47^A47E9D0...") # line 1865, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line  128, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 8
+TEXT: Undefined variable: has_error
+LOCATION: /opt/lampp/htdocs/kano/presentation/admin_files.php, line 76, at October 3, 2015, 11:09 am
+Showing backtrace:
+AdminFiles.init() # line   15, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%3D^3D5^3D503C41%%admin_files.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%3D^3D5^3D503C4...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 512
+TEXT: Smarty error: unable to read resource: "../../properties/messages_en.txt"
+LOCATION: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php, line 1092, at October 3, 2015, 11:11 am
+Showing backtrace:
+trigger_error("Smarty error: unable to read resource: &quot;../../properties/message...", "512") # line 1092, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.trigger_error("unable to read resource: &quot;../../properties/messages_en.txt&quot;") # line 1588, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._fetch_resource_info(Array[5]) # line   94, file: /opt/lampp/htdocs/kano/libs/smarty/plugins/function.config_load.php
+smarty_function_config_load(Array[1], Object: Application) # line    7, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480CD%%index.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%45^45E^45E480C...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("index.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("index.tpl") # line   40, file: /opt/lampp/htdocs/kano/index.php
+
+
+
+ERRNO: 8
+TEXT: Undefined variable: attribut_name_pos
+LOCATION: /opt/lampp/htdocs/kano/presentation/admin_survey_questions.php, line 230, at October 3, 2015, 4:44 pm
+Showing backtrace:
+AdminSurveyQuestions.init() # line   15, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%90^908^9089968A%%admin_survey_questions.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%90^908^9089968...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined variable: attribut_name_neg
+LOCATION: /opt/lampp/htdocs/kano/presentation/admin_survey_questions.php, line 232, at October 3, 2015, 4:44 pm
+Showing backtrace:
+AdminSurveyQuestions.init() # line   15, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%90^908^9089968A%%admin_survey_questions.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%90^908^9089968...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined variable: attribut_name_pos
+LOCATION: /opt/lampp/htdocs/kano/presentation/admin_survey_questions.php, line 230, at October 3, 2015, 4:44 pm
+Showing backtrace:
+AdminSurveyQuestions.init() # line   15, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%90^908^9089968A%%admin_survey_questions.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%90^908^9089968...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined variable: attribut_name_neg
+LOCATION: /opt/lampp/htdocs/kano/presentation/admin_survey_questions.php, line 232, at October 3, 2015, 4:44 pm
+Showing backtrace:
+AdminSurveyQuestions.init() # line   15, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%90^908^9089968A%%admin_survey_questions.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%90^908^9089968...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 256
+TEXT: Smarty error: [in admin_survey_questions.tpl line 48]: syntax error: unrecognized tag: $obj->mSurvey.questions[i].attribute) (Smarty_Compiler.class.php, line 463)
+LOCATION: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php, line 1092, at October 3, 2015, 5:53 pm
+Showing backtrace:
+trigger_error("Smarty error: [in admin_survey_questions.tpl line 48]: syntax er...", "256") # line 1092, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.trigger_error("[in admin_survey_questions.tpl line 48]: syntax error: unrecogni...", "256") # line 1814, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._trigger_fatal_error("syntax error: unrecognized tag: $obj-&gt;mSurvey.questions[i].attri...", "admin_survey_questions.tpl", "48", "/opt/lampp/htdocs/kano/libs/smarty/Smarty_Compiler.class.php", "463", "256") # line 2250, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty_Compiler.class.php
+Smarty_Compiler._syntax_error("unrecognized tag: $obj-&gt;mSurvey.questions[i].attribute)", "256", "/opt/lampp/htdocs/kano/libs/smarty/Smarty_Compiler.class.php", "463") # line  463, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty_Compiler.class.php
+Smarty_Compiler._compile_tag("$obj-&gt;mSurvey.questions[i].attribute)") # line  329, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty_Compiler.class.php
+Smarty_Compiler._compile_file("admin_survey_questions.tpl", "{* admin_category_attributes.tpl *}
+{load_presentation_object fi...", null) # line 1488, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._compile_source("admin_survey_questions.tpl", "{* admin_category_attributes.tpl *}
+{load_presentation_object fi...", null, "/opt/lampp/htdocs/kano/presentation/templates_c/%%90^908^9089968...") # line 1421, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._compile_resource("admin_survey_questions.tpl", "/opt/lampp/htdocs/kano/presentation/templates_c/%%90^908^9089968...") # line 1866, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined index: j
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%90^908^9089968A%%admin_survey_questions.tpl.php, line 129, at October 3, 2015, 5:57 pm
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%90^908^9089968...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined index: 
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%90^908^9089968A%%admin_survey_questions.tpl.php, line 129, at October 3, 2015, 5:57 pm
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%90^908^9089968...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 8
+TEXT: Undefined offset: 2
+LOCATION: /opt/lampp/htdocs/kano/presentation/templates_c/%%90^908^9089968A%%admin_survey_questions.tpl.php, line 129, at October 3, 2015, 5:57 pm
+Showing backtrace:
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%90^908^9089968...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+
+
+ERRNO: 256
+TEXT: SQLSTATE[42000]: Syntax error or access violation: 1305 PROCEDURE kano.catalog_delete_category_attribute does not exist
+LOCATION: /opt/lampp/htdocs/kano/business/database_handler.php, line 70, at October 4, 2015, 9:03 am
+Showing backtrace:
+trigger_error("SQLSTATE[42000]: Syntax error or access violation: 1305 PROCEDUR...", "256") # line   70, file: /opt/lampp/htdocs/kano/business/database_handler.php
+DatabaseHandler.Execute("CALL catalog_delete_category_attribute(:category_id, :attribute_...", Array[2]) # line  946, file: /opt/lampp/htdocs/kano/business/catalog.php
+Catalog.DeleteCategoryAttribute(null, "1") # line  280, file: /opt/lampp/htdocs/kano/presentation/admin_survey_questions.php
+AdminSurveyQuestions.init() # line   15, file: /opt/lampp/htdocs/kano/presentation/smarty_plugins/function.load_presentation_object.php
+smarty_function_load_presentation_object(Array[2], Object: Application) # line    5, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%90^908^9089968A%%admin_survey_questions.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%90^908^9089968...") # line 1868, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty._smarty_include(Array[2]) # line   36, file: /opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D997%%admin.tpl.php
+include("/opt/lampp/htdocs/kano/presentation/templates_c/%%62^620^6206D99...") # line 1255, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.fetch("admin.tpl", null, null, true) # line 1105, file: /opt/lampp/htdocs/kano/libs/smarty/Smarty.class.php
+Smarty.display("admin.tpl") # line   38, file: /opt/lampp/htdocs/kano/admin.php
+
+

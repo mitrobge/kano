@@ -266,8 +266,8 @@ th[data-title]:before, td[data-title]:before    { content:attr(data-title) ":\00
 
 footer{
     background:#888888;
-    position:absolute;
-    bottom:auto;
+    position:auto;
+    bottom:0px;
     width:100%;
     height:50px;
     text-align:center; color:#ffffff; font:bold 1.0em/2.5 arial;

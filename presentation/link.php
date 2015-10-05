@@ -669,18 +669,18 @@ class Link
 
         return self::ToAdmin($link);
     }
-
-
-    // Create link to checkout page
-    public static function ToCheckout($step = null)
+    
+    // Create link to a products administration page
+    public static function ToSurveyQuestionsAdmin($productId, $categoryId = null)
     {
-        $link = 'checkout/';
+        $link = 'Page=QuestionsDetails&ProductId=' . $productId;
 
-        if (!is_null($step))
-            $link .= $step . '/';
-
-        return self::Build($link, 'https');
+        if (!is_null($categoryId))
+            $link .=  '&CategoryId=' . $categoryId;
+        
+        return self::ToAdmin($link);
     }
+
 
     // Create link to shopping carts administration page
     public static function ToCartsAdmin()
@@ -696,40 +696,10 @@ class Link
         return self::ToAdmin($link);
     }
 
-    // Create link to manufacturers administration page
-    public static function ToManufacturersAdmin()
-    {
-        return self::ToAdmin('Page=Manufacturers');
-    }
-
-    // Create link to order details administration page
-    public static function ToOrderDetailsAdmin($orderId, $storeId)
-    {
-        $link = 'Page=OrderDetails&OrderId=' . $orderId . '&StoreId=' . $storeId;
-
-        return self::ToAdmin($link);
-    }
-
-    // Create link to stores administration page
-    public static function ToStoresAdmin()
-    {
-        $link = 'Page=Stores';
-
-        return self::ToAdmin($link);
-    }
-
     // Create link to files administration page
     public static function ToFilesAdmin()
     {
         $link = 'Page=Files';
-
-        return self::ToAdmin($link);
-    }
-
-    // Create link to TÜV Times administration page
-    public static function ToTuvTimesAdmin()
-    {
-        $link = 'Page=TuvTimes';
 
         return self::ToAdmin($link);
     }
@@ -740,117 +710,6 @@ class Link
         $link = 'Page=Administrators';
 
         return self::ToAdmin($link);
-    }
-
-    // Create link to reviews administration page
-    public static function ToReviewsAdmin($page = 1, $reviewId = null)
-    {
-        $link = 'Page=Reviews';
-
-        if ($page > 1)
-            $link .= '&PageNo=' . $page;
-
-        if (!is_null($reviewId))
-            $link .= '&ReviewId=' . $reviewId;
-
-        return self::ToAdmin($link);
-    }
-
-    // Create link to questions administration page
-    public static function ToQuestionsAdmin($page = 1)
-    {
-        $link = 'Page=Questions';
-
-        if ($page > 1)
-            $link .= '&PageNo=' . $page;
-
-        return self::ToAdmin($link);
-    }
-
-    // Create link to question details administration page
-    public static function ToQuestionDetailsAdmin($questionId)
-    {
-        $link = 'Page=QuestionDetails&QuestionId=' . $questionId;
-
-        return self::ToAdmin($link);
-    }
-
-    public static function ToPromotionAdmin($type = '', $page = 1)
-    {
-        $link = 'Page=Promotion';
-
-        if ($type == PROMOTION_TYPE_PRODUCT_OFFER)
-            $link .= '&PromotionType=Offers';
-        else if ($type == PROMOTION_TYPE_PRODUCT_ARRIVAL)
-            $link .= '&PromotionType=Arrivals';
-        else if ($type == PROMOTION_TYPE_PRODUCT_FRONTPAGE)
-            $link .= '&PromotionType=Frontpage';
-        else if ($type == PROMOTION_TYPE_BANNER)
-            $link .= '&PromotionType=Banners';
-        else if ($type == PROMOTION_TYPE_ARTICLE)
-            $link .= '&PromotionType=Articles';
-
-        if ($page > 1)
-            $link .= '&PageNo=' . $page;
-
-        return self::ToAdmin($link);
-    }
-
-    public static function ToSponsorsAdmin()
-    {
-        $link = 'Page=Sponsors';
-        return self::ToAdmin($link);
-    }
-
-    public static function ToBannersAdmin()
-    {
-        $link = 'Page=Promotion';
-        return self::ToAdmin($link);
-    }
-
-    public static function ToBriefingAdmin()
-    {
-        $link = 'Page=Briefing';
-
-        return self::ToAdmin($link);
-    }
-
-    // Create link to sponsor details administration page
-    public static function ToSponsorDetailsAdmin($sponsorId)
-    {
-        $link = 'Page=SponsorDetails&SponsorId=' . $sponsorId;
-
-        return self::ToAdmin($link);
-    }
-
-    public static function ToNewsletterAdmin()
-    {
-        $link = 'Page=Newsletter';
-        return self::ToAdmin($link);
-    }
-
-    public static function ToBannerDetailsAdmin($bannerId)
-    {
-        $link = 'Page=BannerDetails&BannerId=' . $bannerId;
-        return self::ToAdmin($link);
-    }
-
-    public static function ToArticleDetailsAdmin($articleId)
-    {
-        $link = 'Page=ArticleDetails&ArticleId=' . $articleId;
-        return self::ToAdmin($link);
-    }
-
-    // Create link to reports administration page
-    public static function ToReportsAdmin()
-    {
-        return self::ToAdmin('Page=Reports');
-    }
-
-    // Create link to shipping charges administration page
-    public static function ToShippingAdmin()
-    {
-        return self::ToAdmin('Page=Shipping');
     }
 
     // Create link to administrator details administration page
@@ -872,14 +731,6 @@ class Link
         return self::ToAdmin($link);
     }
 
-    // Create link to store details administration page
-    public static function ToStoreDetailsAdmin($storeId)
-    {
-        $link = 'Page=StoreDetails&StoreId=' . $storeId;
-
-        return self::ToAdmin($link);
-    }
-
     // Create link to customer accounts administration page
     public static function ToCustomersAdmin()
     {
@@ -890,27 +741,6 @@ class Link
     public static function ToSearchAdmin()
     {
         return self::ToAdmin('Page=Search');
-    }
-
-    public static function ToSearchAdminResults($searchParams, $page = 1)
-    {
-        $link = 'Page=SearchResults';
-
-        foreach($searchParams as $key => $value) {
-            if (!empty($value))
-                $link .= '&' . str_replace(' ', '', ucwords(str_replace('_', ' ', $key))) . '=' . $value;
-        }
-
-        if ($page > 1)
-            $link .= '&PageNo=' . $page;
-
-        return self::ToAdmin($link);
-    }
-
-    // Create link to register customer
-    public static function ToRegisterCustomer()
-    {
-        return self::Build('customer/register/', 'https');
     }
 
     public static function ToRecoverPassword($rid = null, $user = null)

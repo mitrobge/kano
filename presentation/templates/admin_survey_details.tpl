@@ -215,6 +215,15 @@ $(document).ready(function(){
 
         <br />
 
+        <label style="width:140px"><b>Ενεργή έρευνα:</b></label>
+        {if $obj->mProductActive}
+        <input type="checkbox" id="is_active" value="1" checked name="is_active"/>
+        {else}
+        <input type="checkbox" id="is_active" value="1" name="is_active"/>
+        {/if}
+        
+        <br />
+
         <label style="width:120px;">Περιγραφή: </label>
         {section name=i loop=$obj->mProduct.language}
         <br />
@@ -223,7 +232,7 @@ $(document).ready(function(){
         <img src="images/{$obj->mProduct.language[i].language_flag}" alt="{$obj->mProduct.language[i].language_name}" width="15" height="15" border="0" />
         {/if}
         {strip}
-        <textarea class="ckeditor" name="product_description_{$obj->mProduct.language[i].language_id}" rows="3" cols="50">
+        <textarea class="ckeditor" name="product_description_{$obj->mProduct.language[i].language_id}" rows="1" cols="10">
             {$obj->mProduct.description[i]}
         </textarea>
         {/strip}
@@ -233,19 +242,11 @@ $(document).ready(function(){
 
 
     </fieldset>
-
-    <br/>
-    <br/>
-
-
-
-
-
-
+    
 
         <input id="button1" type="submit" name="submit_update_product_info" value="Ενημέρωση" /> 
         <input id="button2" type="Reset" value="Επαναφορά" />
-        <input id="button1" type="submit" name="submit_remove_from_catalog" value="Αφαίρεση υπηρεσίας" />
+        <input id="button1" type="submit" name="submit_remove_from_catalog" value="Αφαίρεση έρευνας" />
 
         <br />
         <br />

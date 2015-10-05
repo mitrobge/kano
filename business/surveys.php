@@ -148,6 +148,22 @@ class Surveys
             return DatabaseHandler::GetOne($sql, $params);
         }
         
+        public static function GetQuestionName($surveyId, $qId, $languageId = null)
+        {
+            // Get current session's languageId if not specified
+            if (is_null($languageId))
+                $languageId = Language::Get();
+
+            // Build SQL query
+            $sql = 'CALL surveys_get_survey_question(:survey_id, :qid, :language_id)';
+
+            // Build the parameters array
+            $params = array(':survey_id' => $surveyId, ':qid' => $qId, ':language_id' => $languageId);
+
+            // Execute the query and return the results
+            return DatabaseHandler::GetRow($sql, $params);
+        }
+        
         public static function DeleteCategory($categoryId, $forceDelete = false)
         {
             // Build SQL query
@@ -571,27 +587,21 @@ class Surveys
 		DatabaseHandler::Execute($sql, $params);
     }
 
-    public static function MoveProductToCategory($productId, $oldCategoryId, 
-                                                $newCategoryId)
-    {
-        self::AssignProductToCategory($productId, $newCategoryId);
-        self::RemoveProductFromCategory($productId, $oldCategoryId);
-    }
 
-    public static function SetServiceName($serviceId, $serviceName, 
-       $serviceDescription, $languageId)
+    public static function SetSurveyName($surveyId, $surveyName, 
+       $surveyDescription, $isActive, $languageId)
     {
 		// Build SQL query
-        $sql = 'CALL services_set_service_name(:service_id, :service_name, 
-            :service_description, :language_id)';
+        $sql = 'CALL surveys_set_survey_name(:survey_id, :survey_name, 
+            :survey_description, :is_active, :language_id)';
         
         // Build the parameters array
-        $params = array(':service_id' => $serviceId,
-            ':service_name' => $serviceName,
-            ':service_description' => $serviceDescription,
+        $params = array(':survey_id' => $surveyId,
+            ':survey_name' => $surveyName,
+            ':survey_description' => $surveyDescription,
+            ':is_active' => $isActive,
             ':language_id' => $languageId);
 
-		// Execute the query
 		DatabaseHandler::Execute($sql, $params);
     }
     
@@ -826,6 +836,19 @@ class Surveys
 
 		// Build the parameters array
 		$params = array(':survey_id' => $surveyId, ':language_id' => $languageId);
+
+		// Execute the query and return the results
+		return DatabaseHandler::GetOne($sql, $params);
+	}
+    
+    public static function GetSurveyIsActive($surveyId)
+    {
+
+		// Build SQL query
+		$sql = 'CALL surveys_get_survey_isactive(:survey_id)';
+
+		// Build the parameters array
+		$params = array(':survey_id' => $surveyId);
 
 		// Execute the query and return the results
 		return DatabaseHandler::GetOne($sql, $params);
@@ -1368,6 +1391,50 @@ class Surveys
 
         // Execute the query and return the results
         return DatabaseHandler::GetAll($sql, $params);
+    }
+    
+    public static function GetSurveyQuestions($surveyId, $languageId = null)
+    {
+        // Get current session's languageId if not specified
+        if (is_null($languageId))
+            $languageId = Language::Get();
+
+        // Build SQL query
+        $sql = 'CALL surveys_get_survey_questions(:survey_id, :language_id)';
+
+        // Build the parameters array
+        $params = array(':survey_id' => $surveyId, ':language_id' => $languageId);
+
+        // Execute the query and return the results
+        return DatabaseHandler::GetAll($sql, $params);
+    }
+    
+    public static function AddSurveyQuestion($surveyId)
+    {
+	// Build SQL query
+        $sql = 'CALL surveys_add_survey_question(:survey_id)';
+
+		// Build the parameters array
+        $params = array(':survey_id' => $surveyId);
+
+		// Execute the query
+		return DatabaseHandler::GetOne($sql, $params);
+    }
+    
+    public static function UpdateSurveyQuestion($questionId, $questionNamePos, $questionNameNeg, $languageId)
+    {
+	// Build SQL query
+        $sql = 'CALL surveys_update_survey_question(:question_id, 
+            :question_name_pos, :question_name_neg, :language_id)';
+
+		// Build the parameters array
+        $params = array(':question_id' => $questionId, 
+                        ':question_name_pos' => $questionNamePos,
+                        ':question_name_neg' => $questionNameNeg,
+                        ':language_id' => $languageId);
+
+	// Execute the query
+	DatabaseHandler::Execute($sql, $params);
     }
 }
 ?>

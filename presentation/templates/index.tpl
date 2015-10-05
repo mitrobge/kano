@@ -1,7 +1,7 @@
 {* smarty *}
 {load_presentation_object filename="index" assign="obj"}
-{config_load file="../../properties/messages_"|cat:$obj->mActiveLang|cat:".txt"}
-{*{config_load file="/opt/lampp/htdocs/kano/properties/messages_"|cat:$obj->mActiveLang|cat:".txt"}*}
+{*{config_load file="../../properties/messages_"|cat:$obj->mActiveLang|cat:".txt"}*}
+{config_load file="/opt/lampp/htdocs/kano/properties/messages_"|cat:$obj->mActiveLang|cat:".txt"}
 <!DOCTYPE html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -77,10 +77,10 @@
         		<li class="gr">{#gr#}</li>
         		<li class="en">{#en#}</li>
         	</ul>
-            <a style="padding-left:6px; font-size: 12px;" id="change" href="{$obj->mLinks.toChangeLang}">{#change#}</a>
+            <a style="font-size: 12px;" id="change" href="{$obj->mLinks.toChangeLang}">{#change#}</a>
         </li>
         </ul>
-        <a href="{$obj->mUrl}"><h3>Kano Model</h3></a>
+        <a href="{$obj->mUrl}"><img src="{$obj->mUrl}/img/customer-survey.jpg" width="80px" height="80px"></a>
     </article>
 </section>
 <section class="row">
@@ -97,8 +97,7 @@
 </section>
 {include file=$obj->mContentsCell}
 
-
-<footer>{#email#}: {$obj->owner_data[0].email}, {#mobile#}: {$obj->owner_data[0].mobile_numebr}</footer>
+<footer>{#email#}: <a href="mailto:{$obj->owner_data[0].email}">{$obj->owner_data[0].email}</a>, {#mobile#}: <a href="tel:{$obj->owner_data[0].mobile_numebr}">{$obj->owner_data[0].mobile_numebr}</a></footer>
 
 
 </body>

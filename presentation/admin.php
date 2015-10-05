@@ -63,6 +63,8 @@ class Admin {
                 $this->mContentsCell = 'admin_product_add.tpl';
             else if ($admin_page == 'ProductDetails')
                 $this->mContentsCell = 'admin_survey_details.tpl';
+            else if ($admin_page == 'QuestionsDetails')
+                $this->mContentsCell = 'admin_survey_questions.tpl';
             else if ($admin_page == 'ShoppingCarts')
                 $this->mContentsCell = 'admin_carts.tpl';
             else if ($admin_page == 'Manufacturers')

@@ -39,7 +39,6 @@ class AdminSurveyQuestions
     public function GetQuestionName($questionId, $languageId)
     {
         return Surveys::GetQuestionName($questionId, $languageId);
-        echo "sdff";
     }
 
     public function __construct ()
@@ -85,7 +84,7 @@ class AdminSurveyQuestions
         $this->mLanguages = Language::GetAll();
         
         $this->mLinkToSurveyQuestionsAdmin = 
-            Link::ToSurveyQuestionsAdmin($this->__mCategoryId);
+            Link::ToSurveyQuestionsAdmin($_GET['ProductId']);
         
     }
 
@@ -211,29 +210,32 @@ class AdminSurveyQuestions
         case ADD_ATTRIBUTE:
             /* Check if attribute name(s) are empty or already exist */
             $has_error = false;
-            for ($i = 0; $i < count($this->mLanguages); $i++) { // TODO: js validation of input (for all languages)
-                $attribute_name = $_POST['added_attribute_name_' . 
-                    $this->mLanguages[$i]['language_id']];
-                if (empty($attribute_name)) {
-                    $this->mErrorMessage = 'Το όνομα του χαρακτηριστικού δε μπορεί να είναι άδειο';
-                    $has_error = true;
-                    break;
-                } 
+            for( $j = 0; $j<2; $j++){
+                for ($i = 0; $i < count($this->mLanguages); $i++) { // TODO: js validation of input (for all languages)
+                    $attribute_name = $_POST['added_attribute_name_' . $j. '_'. 
+                        $this->mLanguages[$i]['language_id']];
+                    if (empty($attribute_name)) {
+                        $this->mErrorMessage = 'Το όνομα του χαρακτηριστικού δε μπορεί να είναι άδειο';
+                        $has_error = true;
+                        break;
+                    } 
+                }
             }
             /* Add the attribute */
             if (!$has_error) {
                 $attribute_id = Surveys::AddSurveyQuestion($this->surveyId);
                 for ($i = 0; $i < count($this->mLanguages); $i++) {
-                    $attribute_name = $_POST['added_attribute_name_' . 
-                        $this->mLanguages[$i]['language_id']];
-                    Catalog::UpdateCategoryAttribute($attribute_id, 
-                        $attribute_name, $this->mLanguages[$i]['language_id']);
+                    $attribute_name_pos = $_POST['added_attribute_name_' . '0'. '_'. $this->mLanguages[$i]['language_id']];
+                    
+                    $attribute_name_neg = $_POST['added_attribute_name_' . '1'. '_'. $this->mLanguages[$i]['language_id']];
+                    Surveys::UpdateSurveyQuestion($attribute_id, 
+                        $attribute_name_pos, $attribute_name_neg, $this->mLanguages[$i]['language_id']);
                 }
                 header('Location: ' .
                     htmlspecialchars_decode(
-                        $this->mLinkToCategoryAttributesAdmin));
+                        $this->mLinkToSurveyQuestionsAdmin));
                 exit(0);
-            }
+                }
             break;
         case ASSIGN_ATTRIBUTE:
             $attribute_id = $_POST['assigned_attribute_id'];
@@ -244,7 +246,6 @@ class AdminSurveyQuestions
             exit(0);
         case EDIT_ATTRIBUTE:
             $this->mEditItem = $this->__mActionedAttributeId;
-            echo $this->mEditItem;
             $this->mWarningMessage = 'Η τροποποίηση ενός χαρακτηρηστικού επηρεάζει όλες τις κατηγορίες';
             break;
         case UPDATE_ATTRIBUTE:

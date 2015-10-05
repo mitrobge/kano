@@ -29,6 +29,7 @@ class AdminSurveyDetails
 {
     public $mService;
     public $mProduct;
+    public $mProductActive;
     public $mManufacturers;
     public $mOtherCategories;
     public $mErrorMessage;
@@ -42,6 +43,8 @@ class AdminSurveyDetails
     public $mStoreBranches;
     public $mAvailabilityStatusOptions;
     public $mTabs;
+    
+    public $mQuestions;
     
     public $mAnnouncementCategoryName;
     public $mAnnouncementsPerCategory;
@@ -241,14 +244,16 @@ class AdminSurveyDetails
             } 
             break;
         case UPDATE_PRODUCT_INFO:
+            
+            $survey_active = isset($_POST['is_active']) ? 1 : 0;
             /* Update name and description for all languages */
             for ($i = 0; $i < count($this->mLanguages); $i++) { // TODO: js validation of input (for all languages)
                 $product_name = $_POST['product_name_' . 
                     $this->mLanguages[$i]['language_id']];
                 $product_description = $_POST['product_description_' . 
                     $this->mLanguages[$i]['language_id']];
-                Services::SetServiceName($this->__mProductId, $product_name,  
-                    $product_description, $this->mLanguages[$i]['language_id']);
+                Surveys::SetSurveyName($this->__mProductId, $product_name,  
+                    $product_description, $survey_active, $this->mLanguages[$i]['language_id']);
             }
 
             /* Update default resources based on resource_type */
@@ -352,29 +357,12 @@ class AdminSurveyDetails
            // exit();
         }
 
-        $category = Surveys::GetCategory($this->__mCategoryId);
-
-
-        /* Get the details of product */
-        $this->mProduct = Surveys::GetSurveyDetails($this->__mProductId);
-
 
         /* Get supported languages */
         $this->mLanguages = Language::GetAll();
         $this->mNumOfLanguages = count($this->mLanguages);
 
-
-        /* Get name and description for all languages */
-        $this->mProduct['name'] = array();
-        $this->mProduct['introduction'] = array();
-        $this->mProduct['description'] = array();
-        $this->mProduct['comments'] = array();
-        $this->mProduct['language'] = array();
-        $this->mService['resources'] = array();
-        $this->mService['default_resources'] = array();
-        $this->NumOfResources = array();
-        $this->NumOfDefaultResources = array();
-
+        $this->surveyId = $_GET['ProductId'];
 
         for ($i = 0; $i < count($this->mLanguages); $i++) 
         {
@@ -383,10 +371,13 @@ class AdminSurveyDetails
                 $this->__mProductId, $this->mLanguages[$i]['language_id']);
             $this->mProduct['description'][] = Surveys::GetSurveyDescription(
                 $this->__mProductId, $this->mLanguages[$i]['language_id']);
+            
+            $this->mQuestions[$i] = Surveys::GetSurveyQuestions($this->surveyId, $this->mLanguages[$i]['language_id']);
+            $this->NumOfQuestions[] = count($this->mQuestions[$i]);
         }
-
-
         
+        $this->mProductActive = Surveys::GetSurveyIsActive($this->__mProductId, 1);
+
 
 
 
