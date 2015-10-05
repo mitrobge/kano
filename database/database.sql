@@ -168,7 +168,7 @@ CREATE TABLE survey_owner (
   email VARCHAR(96) NOT NULL,
   address VARCHAR(96) DEFAULT NULL,
   phone_number VARCHAR(10) DEFAULT NULL,
-  mobile_numebr VARCHAR(10) DEFAULT NULL,
+  mobile_number VARCHAR(10) DEFAULT NULL,
   PRIMARY KEY (id),
   UNIQUE KEY idx_customer_email (email)
 );
@@ -892,7 +892,7 @@ CREATE PROCEDURE survey_submit_answer(IN customerEmail VARCHAR(50),
 
 CREATE PROCEDURE surveys_survey_owner_data()
 BEGIN
-    select survey_owner.email, survey_owner.address, survey_owner.phone_number, survey_owner.mobile_numebr from survey_owner;
+    select survey_owner.email, survey_owner.address, survey_owner.phone_number, survey_owner.mobile_number from survey_owner;
 END$$
 
 CREATE PROCEDURE surveys_get_survey_question(IN inSurveyId INT, IN inQuestionCharacteristicId INT, IN inLanguageId INT)

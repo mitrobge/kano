@@ -363,7 +363,7 @@ INSERT INTO administrator_permission (administrator_id, permission_id) VALUES
 
 update kano.survey set survey.survey_edate = now() + interval 2 month where survey.survey_id < 3;
 
-INSERT INTO survey_owner (id, email, address, phone_number, mobile_numebr)
+INSERT INTO survey_owner (id, email, address, phone_number, mobile_number)
 VALUES (1, 'admin@eparxis.com', 'Πανεπιστημίου 124', '2109012345', '6977000000');
 
 delete from survey;

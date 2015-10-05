@@ -1,7 +1,7 @@
 {* smarty *}
 {load_presentation_object filename="index" assign="obj"}
-{*{config_load file="../../properties/messages_"|cat:$obj->mActiveLang|cat:".txt"}*}
-{config_load file="/opt/lampp/htdocs/kano/properties/messages_"|cat:$obj->mActiveLang|cat:".txt"}
+{config_load file="../../properties/messages_"|cat:$obj->mActiveLang|cat:".txt"}
+{*{config_load file="/opt/lampp/htdocs/kano/properties/messages_"|cat:$obj->mActiveLang|cat:".txt"}*}
 <!DOCTYPE html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -97,7 +97,7 @@
 </section>
 {include file=$obj->mContentsCell}
 
-<footer>{#email#}: <a href="mailto:{$obj->owner_data[0].email}">{$obj->owner_data[0].email}</a>, {#mobile#}: <a href="tel:{$obj->owner_data[0].mobile_numebr}">{$obj->owner_data[0].mobile_numebr}</a></footer>
+<footer>{#email#}: <a href="mailto:{$obj->owner_data[0].email}">{$obj->owner_data[0].email}</a>, {#mobile#}: <a href="tel:{$obj->owner_data[0].mobile_number}">{$obj->owner_data[0].mobile_number}</a></footer>
 
 
 </body>
