@@ -633,7 +633,7 @@ END$$
 
 CREATE PROCEDURE surveys_get_survey_name(IN inSurveyId INT, IN inLanguageId INT)
 BEGIN
-    SELECT 	name, attribute
+    SELECT 	name
     FROM	survey_description
     WHERE	survey_id = inSurveyId
     AND language_id = inLanguageId;
