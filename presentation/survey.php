@@ -9,10 +9,10 @@ class Survey
     public $mActiveLang;
     public $mLinkToSubmitSurvey;
     public $data;
-    public $links = array();
     private $surveyId = null;
     public $isCss;
     public $answers = array();
+    public $attributes = array();
 
 
 // Class constructor
@@ -43,9 +43,9 @@ class Survey
 
         } else {
             $this->data = Surveys::GetSurveyData($this->surveyId, null);
-            /*foreach ($this->data as $item) {
-                echo "data: ". $item['question'];
-            }*/
+            foreach ($this->data as $item) {
+                $this->attributes[$item['qid']] = $item['attribute'];
+            }
 
         }
     }

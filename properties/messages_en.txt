@@ -19,3 +19,4 @@ already_submitted=You have already submitted the survey
 invalid_email=Invalid email
 mobile=Mobile Number
 submit=Submit
+attribute_rating=Please evaluate the attributes

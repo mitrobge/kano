@@ -1315,6 +1315,18 @@ class Surveys
         return $result;
     }
 
+    public static function SubmitSurveyAttributeRate($customerEmail, $characteristicId, $rate)
+    {
+        // Build SQL query
+        $sql = 'CALL survey_submit_attributes(:email, :qid, :rate)';
+
+        // Build the parameters array
+        $params = array(':email' => $customerEmail,
+            ':qid' => $characteristicId, ':rate' => $rate);
+
+        DatabaseHandler::Execute($sql, $params);
+    }
+
     public static function SubmitCssSurveyAnswer($customerEmail, $surveyId,
                                               $characteristicId, $sccaAnswerId)
     {

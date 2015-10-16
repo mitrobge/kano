@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="{$obj->mUrl}assets/css/amazium.css">
     <link rel="stylesheet" href="{$obj->mUrl}assets/css/layout.css">
     <link rel="stylesheet" href="{$obj->mUrl}assets/css/form.css">
+    <link rel="stylesheet" href="{$obj->mUrl}assets/css/rating/bars-1to10.css">
 
     <!-- Favicons -->
     <link rel="shortcut icon" href="images/favicon.ico">
@@ -59,6 +60,9 @@
 
     <script type="text/javascript" src="{$obj->mUrl}assets/js/actions.js"></script>
 
+
+    <script src="assets/js/jquery.barrating.js"></script>
+    <script src="assets/js/rating.js"></script>
 
 </head>
 <body>

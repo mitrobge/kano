@@ -44,6 +44,32 @@
                     {if $item.is_positive eq 0}<hr>{/if}
                 {/foreach}
 
+                <strong>{#attribute_rating#}:</strong><br><br>
+
+                <div></div>
+                {assign var="i" value=1}
+                {foreach from=$obj->attributes key=key item=item}
+
+                    <p><strong>{$item}</strong></p>
+
+
+                    <select id="example-1to10_{$i++}" name="rate{$key}">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5" selected="selected">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+
+
+
+                {/foreach}
+
                 <fieldset>
                     <label for="email"><strong>{#email#}:* </strong></label>
                     <input type="email" name="email" id="email" placeholder="Email" tabindex="1" pattern="[0-9\-.\(\)\+\s]+" />

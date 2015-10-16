@@ -186,6 +186,16 @@ CREATE TABLE css_survey_answers
 )
   ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+CREATE TABLE survey_attribute_rating (
+  question_characteristic_id INT NOT NULL,
+  rate INT NOT NULL,
+  customer_id INT NOT NULL,
+  PRIMARY KEY (question_characteristic_id, customer_id)
+);
+
+
+
 -- Change DELIMITER to $$
 DELIMITER $$
 
@@ -1050,5 +1060,20 @@ CREATE PROCEDURE surveys_get_customer_css_survey_answers(IN surveyId INT, IN cus
     from css_survey_answers sa join customer c on sa.customer_id = c.customer_id
     where sa.survey_id = surveyId and c.email = customerEmail;
   END$$
+
+
+CREATE PROCEDURE survey_submit_attributes(IN customerEmail VARCHAR(50),
+                                          IN characteristicId INT,
+                                          IN rate INT)
+  BEGIN
+    DECLARE cId int;
+
+    select customer_id INTO cId from customer where email =  customerEmail;
+
+    INSERT
+    INTO  survey_attribute_rating (question_characteristic_id, rate, customer_id)
+    VALUES (characteristicId, rate, cId);
+  END$$
+
 -- Change back DELIMITER to ;
 DELIMITER ;

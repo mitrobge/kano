@@ -97,6 +97,11 @@ class SubmitSurvey
                     break;
                 }
 
+
+                $attributeRate = $_POST["rate" . $value];
+
+                Surveys::SubmitSurveyAttributeRate($email, $value, $attributeRate);
+
             }
         }
 
