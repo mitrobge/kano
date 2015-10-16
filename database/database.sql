@@ -837,7 +837,7 @@ END$$
 
 CREATE PROCEDURE surveys_get_survey_data(IN surveyId INT, IN inLanguageId INT)
 BEGIN
-    SELECT s.survey_id id, d.name, d.description, sqc.question_characteristic_id qid, sqcd.question, sqcd.is_positive
+    SELECT s.survey_id id, d.name, d.description, sqc.question_characteristic_id qid, sqcd.question, sqcd.is_positive, sqcd.attribute
     FROM survey s join kano.survey_description d on d.survey_id = s.survey_id
     join survey_questions_characteristics sqc on sqc.survey_id = s.survey_id
     join kano.survey_questions_characteristics_description sqcd on sqcd.question_characteristic_id = sqc.question_characteristic_id
